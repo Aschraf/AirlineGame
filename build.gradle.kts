@@ -1,3 +1,6 @@
+repositories{
+  jcenter()
+}
 
 plugins {
   application
@@ -5,6 +8,7 @@ plugins {
   kotlin("plugin.serialization") version "1.4.10"
   id("com.github.johnrengelman.shadow") version "6.1.0"
   id("org.openjfx.javafxplugin") version "0.0.9"
+  id("io.gitlab.arturbosch.detekt") version "1.16.0-RC1"
 }
 
 group = "airline"
@@ -34,6 +38,18 @@ repositories {
 
 dependencies {
   implementation(kotlin("stdlib"))
+}
+
+detekt {
+  failFast = false
+  buildUponDefaultConfig = true
+
+  config = files("$projectDir/detekt/detekt-config.yml") // point to your custom config defining rules to run, overwriting default behavior
+  baseline = file("$projectDir/detekt/detekt-baseline.xml") // a way of suppressing issues before introducing detekt
+
+  reports {
+    html.enabled = true // observe findings in your browser with structure and code snippets
+  }
 }
 
 tasks{

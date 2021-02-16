@@ -1,5 +1,6 @@
 package com.airproject
 
+import com.airproject.dynamicimage.DynamicImageView
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.image.Image

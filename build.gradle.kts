@@ -4,6 +4,7 @@ plugins {
   kotlin("jvm") version "1.4.10"
   kotlin("plugin.serialization") version "1.4.10"
   id("com.github.johnrengelman.shadow") version "6.1.0"
+  id("org.openjfx.javafxplugin") version "0.0.9"
 }
 
 group = "airline"
@@ -12,13 +13,19 @@ version = "0.1-SNAPSHOT"
 val javaVersionString = "11"
 val javaVersion = JavaVersion.toVersion(javaVersionString)
 
+
 java {
   sourceCompatibility = javaVersion
   targetCompatibility = javaVersion
 }
 
+javafx {
+  version = "15.0.1"
+  modules("javafx.base", "javafx.controls", "javafx.fxml")
+}
+
 application {
-  mainClassName = "com.optravis.api.MainClassKt"
+  mainClass.set("com.airproject.MainClassKt")
 }
 
 repositories {
@@ -27,8 +34,6 @@ repositories {
 
 dependencies {
   implementation(kotlin("stdlib"))
-
-  implementation("com.github.ajalt:clikt:2.8.0")
 }
 
 tasks{

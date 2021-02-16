@@ -13,7 +13,7 @@ class MainClass : Application() {
   override fun start(stage: Stage) {
     stage.title = "Hello, World!"
 
-    val image = javaClass.classLoader.getResourceAsStream("image/earth_map.jpg")?.let { Image(it) }
+    val image = javaClass.classLoader.getResourceAsStream("image/grid.gif")?.let { Image(it) }
         ?: throw IllegalStateException("Unable to load map")
 
     val dynamicImage = DynamicImageView(image)

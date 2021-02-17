@@ -3,6 +3,7 @@ package com.airproject.dynamicimage
 import javafx.geometry.Point2D
 import javafx.scene.Node
 import javafx.scene.image.Image
+import javafx.scene.input.MouseButton
 import javafx.scene.layout.Pane
 import javafx.scene.shape.Rectangle
 
@@ -26,6 +27,12 @@ class MapCanvas(parent: Pane, image: Image) : Pane() {
     }
 
     clipChildren()
+
+    rectangle.node.setOnMousePressed { e->
+      if (e.button == MouseButton.PRIMARY) {
+        println("Button pressed!")
+      }
+    }
 
     children.addAll(imageComponent.imageView, rectangle.node)
   }

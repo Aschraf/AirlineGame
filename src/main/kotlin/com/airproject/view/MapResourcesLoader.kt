@@ -20,13 +20,12 @@ class MapResourcesLoader(
     val mapSize = canvas.imageSize
 
     airportStore.content.forEach {
-
-      val locX = mapSize.width * (it.longitude + 180) / 360
-      val locY = mapSize.height * (90 - it.latitude) / 180
+      val (locX, locY) = it.gcs.asPlanar(mapSize.width, mapSize.height)
 
       println("Placing ${it.sign} in ($locX, $locY)")
 
       val node = Circle(5.0, Color.BLACK)
+
       node.addTooltip(it)
       node.setOnMouseClicked { e ->
         if (e.button == MouseButton.PRIMARY) {

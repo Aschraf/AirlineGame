@@ -1,6 +1,6 @@
 package com.airproject
 
-import com.airproject.dynamicimage.DynamicImageView
+import com.airproject.dynamicimage.MapCanvas
 import javafx.fxml.FXML
 import javafx.scene.image.Image
 import javafx.scene.layout.GridPane
@@ -20,11 +20,11 @@ class MainViewController {
     val image = javaClass.classLoader.getResourceAsStream("image/grid.png")?.let { Image(it) }
         ?: throw IllegalStateException("Unable to load map")
 
-    val imageComponent = DynamicImageView(image).component
+    val canvas = MapCanvas(mainPane, image)
 
-    imageComponent.fitWidthProperty().bind(mainPane.widthProperty())
-    imageComponent.fitHeightProperty().bind(mainPane.heightProperty())
 
-    mainPane.children.add(imageComponent)
+
+
+    mainPane.children.add(canvas)
   }
 }

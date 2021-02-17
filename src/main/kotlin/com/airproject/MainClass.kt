@@ -1,6 +1,6 @@
 package com.airproject
 
-import com.airproject.store.airport.AirportStore
+import com.airproject.common.LocalResource
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
@@ -12,14 +12,8 @@ class MainClass : Application() {
   override fun start(stage: Stage) {
     stage.title = "Hello World!"
 
-
-    val store = AirportStore()
-
-    println(store.content)
-
     val fxmlLoader = FXMLLoader(javaClass.getResource(LocalResource.Layout.MAIN_VIEW))
     val region: Region = fxmlLoader.load()
-
 
     //Creating a scene object
     val scene = Scene(region, 600.0, 400.0)

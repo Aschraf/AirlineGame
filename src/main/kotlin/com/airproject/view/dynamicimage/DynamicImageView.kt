@@ -1,4 +1,4 @@
-package com.airproject.dynamicimage
+package com.airproject.view.dynamicimage
 
 import javafx.beans.property.ObjectProperty
 import javafx.beans.property.SimpleObjectProperty

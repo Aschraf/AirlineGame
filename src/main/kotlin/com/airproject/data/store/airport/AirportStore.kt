@@ -1,7 +1,7 @@
-package com.airproject.store.airport
+package com.airproject.data.store.airport
 
-import com.airproject.LocalResource
-import com.airproject.store.ILocalStore
+import com.airproject.common.LocalResource
+import com.airproject.data.store.ILocalStore
 import com.airproject.util.FileUtil
 
 

@@ -1,9 +1,9 @@
-package com.airproject.dynamicimage
+package com.airproject.view.dynamicimage
 
+import javafx.geometry.Dimension2D
 import javafx.geometry.Point2D
 import javafx.scene.Node
 import javafx.scene.image.Image
-import javafx.scene.input.MouseButton
 import javafx.scene.layout.Pane
 import javafx.scene.shape.Rectangle
 
@@ -12,8 +12,9 @@ data class MapComponent(val node: Node, val mapX: Int, val mapY: Int)
 
 class MapCanvas(parent: Pane, image: Image) : Pane() {
   private val imageComponent = DynamicImageView(image)
+  private val mapComponents = mutableListOf<MapComponent>()
 
-  private val rectangle = MapComponent(Rectangle(50.0, 50.0), 200, 100)
+  val imageSize = Dimension2D(image.width, image.height)
 
   init {
     imageComponent.fitTo(parent)
@@ -28,13 +29,17 @@ class MapCanvas(parent: Pane, image: Image) : Pane() {
 
     clipChildren()
 
-    rectangle.node.setOnMousePressed { e->
-      if (e.button == MouseButton.PRIMARY) {
-        println("Button pressed!")
-      }
-    }
 
-    children.addAll(imageComponent.imageView, rectangle.node)
+    children.addAll(imageComponent.imageView)
+  }
+
+  fun addComponent(component: MapComponent) {
+    mapComponents.add(component)
+    children.add(component.node)
+  }
+
+  fun addComponents(components: Collection<MapComponent>) {
+    components.forEach { addComponent(it) }
   }
 
   private fun clipChildren() {
@@ -48,10 +53,13 @@ class MapCanvas(parent: Pane, image: Image) : Pane() {
 
 
   private fun updateComponents() {
-    val newCoordinates = imageComponent.raw(Point2D(rectangle.mapX.toDouble(), rectangle.mapY.toDouble()))
+    mapComponents.forEach { component ->
+      val newCoordinates = imageComponent.raw(Point2D(component.mapX.toDouble(), component.mapY.toDouble()))
 
-    rectangle.node.translateX = newCoordinates.x
-    rectangle.node.translateY = newCoordinates.y
+      component.node.translateX = newCoordinates.x
+      component.node.translateY = newCoordinates.y
+    }
+
   }
 
 

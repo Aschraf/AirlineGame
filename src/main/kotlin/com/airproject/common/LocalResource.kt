@@ -1,4 +1,4 @@
-package com.airproject
+package com.airproject.common
 
 object LocalResource {
   object Image {

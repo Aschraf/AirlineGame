@@ -1,4 +1,4 @@
-package com.airproject.store.airport
+package com.airproject.data.store.airport
 
 
 data class AirportPojo(

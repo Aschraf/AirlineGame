@@ -32,9 +32,7 @@ class DynamicImageView(image: Image) {
     val mouseDown: ObjectProperty<Point2D> = SimpleObjectProperty()
 
     imageView.setOnMousePressed { e ->
-      if (e.button == MouseButton.PRIMARY) {
-        println("Primary click on ${adjust(Point2D(e.x, e.y))}, raw (${e.x}, ${e.y})")
-      } else if (e.button == MouseButton.SECONDARY) {
+      if (e.button == MouseButton.SECONDARY) {
         val mousePress = adjust(Point2D(e.x, e.y))
         mouseDown.set(mousePress)
       }
@@ -98,8 +96,8 @@ class DynamicImageView(image: Image) {
   fun raw(imageViewCoordinates: Point2D): Point2D {
     val viewport = viewPortProperty.get()
 
-    val x = (imageViewCoordinates.x - viewport.minX) * (imageView.boundsInLocal.width/ viewport.width)
-    val y = (imageViewCoordinates.y - viewport.minY) * (imageView.boundsInLocal.height/ viewport.height)
+    val x = (imageViewCoordinates.x - viewport.minX) * (imageView.boundsInLocal.width / viewport.width)
+    val y = (imageViewCoordinates.y - viewport.minY) * (imageView.boundsInLocal.height / viewport.height)
 
     return Point2D(x, y)
   }

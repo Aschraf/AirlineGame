@@ -14,5 +14,9 @@ object LocalResource {
     const val MAIN_VIEW = "/layout/MainView.fxml"
   }
 
+  object Icon {
+    const val AIRPORT = "/icon/airport_black_16.png"
+  }
+
 
 }

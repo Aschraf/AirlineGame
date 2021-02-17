@@ -8,11 +8,11 @@ import javafx.scene.layout.Pane
 import javafx.scene.shape.Rectangle
 
 
-data class MapComponent(val node: Node, val mapX: Int, val mapY: Int)
+data class MapComponent<T:Node>(val node: T, val mapX: Int, val mapY: Int)
 
 class MapCanvas(parent: Pane, image: Image) : Pane() {
   private val imageComponent = DynamicImageView(image)
-  private val mapComponents = mutableListOf<MapComponent>()
+  private val mapComponents = mutableListOf<MapComponent<*>>()
 
   val imageSize = Dimension2D(image.width, image.height)
 
@@ -33,12 +33,12 @@ class MapCanvas(parent: Pane, image: Image) : Pane() {
     children.addAll(imageComponent.imageView)
   }
 
-  fun addComponent(component: MapComponent) {
+  fun addComponent(component: MapComponent<*>) {
     mapComponents.add(component)
     children.add(component.node)
   }
 
-  fun addComponents(components: Collection<MapComponent>) {
+  fun addComponents(components: Collection<MapComponent<*>>) {
     components.forEach { addComponent(it) }
   }
 
@@ -59,8 +59,5 @@ class MapCanvas(parent: Pane, image: Image) : Pane() {
       component.node.translateX = newCoordinates.x
       component.node.translateY = newCoordinates.y
     }
-
   }
-
-
 }

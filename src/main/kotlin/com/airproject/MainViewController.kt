@@ -17,7 +17,7 @@ class MainViewController {
     mainGrid.style = "-fx-background-color:red";
     mainPane.style = "-fx-background-color:blue";
 
-    val image = javaClass.classLoader.getResourceAsStream("image/earth_map.jpg")?.let { Image(it) }
+    val image = javaClass.classLoader.getResourceAsStream("image/grid.png")?.let { Image(it) }
         ?: throw IllegalStateException("Unable to load map")
 
     val imageComponent = DynamicImageView(image).component

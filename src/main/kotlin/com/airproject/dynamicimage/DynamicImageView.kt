@@ -32,9 +32,9 @@ class DynamicImageView(image: Image) {
 
     imageView.setOnMousePressed { e ->
       if (e.button == MouseButton.PRIMARY) {
-        println("Primary click on (${e.x}, ${e.y}")
+        println("Primary click on ${imageViewToImage(Point2D(e.x, e.y))}")
       } else if (e.button == MouseButton.SECONDARY) {
-        val mousePress = imageViewToImage(imageView, Point2D(e.x, e.y))
+        val mousePress = imageViewToImage(Point2D(e.x, e.y))
         mouseDown.set(mousePress)
       }
     }
@@ -42,9 +42,9 @@ class DynamicImageView(image: Image) {
     imageView.setOnMouseDragged { e ->
       // Only drag on right click
       if (e.button == MouseButton.SECONDARY) {
-        val dragPoint = imageViewToImage(imageView, Point2D(e.x, e.y))
+        val dragPoint = imageViewToImage(Point2D(e.x, e.y))
         shift(imageView, dragPoint.subtract(mouseDown.get()))
-        mouseDown.set(imageViewToImage(imageView, Point2D(e.x, e.y)))
+        mouseDown.set(imageViewToImage(Point2D(e.x, e.y)))
       }
     }
 
@@ -58,7 +58,7 @@ class DynamicImageView(image: Image) {
           // don't scale so that we're bigger than image dimensions
           max = max(width / viewport.width, height / viewport.height)
       )
-      val mouse = imageViewToImage(imageView, Point2D(e.x, e.y))
+      val mouse = imageViewToImage(Point2D(e.x, e.y))
       val newWidth = viewport.width * scale
       val newHeight = viewport.height * scale
 
@@ -78,11 +78,13 @@ class DynamicImageView(image: Image) {
     }
   }
 
-  /** convert mouse coordinates in the imageView to coordinates in the actual image */
-  private fun imageViewToImage(imageView: ImageView, imageViewCoordinates: Point2D): Point2D {
+  /** Convert mouse coordinates in the imageView to coordinates in the actual image */
+  private fun imageViewToImage(imageViewCoordinates: Point2D): Point2D {
     val xProportion = imageViewCoordinates.x / imageView.boundsInLocal.width
     val yProportion = imageViewCoordinates.y / imageView.boundsInLocal.height
+
     val viewport = imageView.viewport
+
     return Point2D(
         viewport.minX + xProportion * viewport.width,
         viewport.minY + yProportion * viewport.height

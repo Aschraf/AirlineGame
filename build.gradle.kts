@@ -38,6 +38,9 @@ repositories {
 
 dependencies {
   implementation(kotlin("stdlib"))
+
+  implementation("com.jfoenix:jfoenix:9.0.10")
+
 }
 
 detekt {

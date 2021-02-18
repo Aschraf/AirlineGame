@@ -4,6 +4,7 @@ object LocalResource {
   object Image {
     const val EARTH_MAP = "image/earth_map.jpg"
     const val GRID = "image/grid.png"
+    const val AIRLINE_FLAG = "image/airline_flag.jpg"
   }
 
   object Map{

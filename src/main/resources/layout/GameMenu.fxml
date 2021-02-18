@@ -2,15 +2,8 @@
 
 
 <?import com.jfoenix.controls.JFXTabPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="com.airproject.gameview.GameMenuController">
-    <JFXTabPane>
-        <Tab text="Tab 1">
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
-        </Tab>
-        <Tab text="Tab 2">
-        </Tab>
+    <JFXTabPane fx:id="tabPane">
     </JFXTabPane>
 </StackPane>

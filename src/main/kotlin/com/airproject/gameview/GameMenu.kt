@@ -16,8 +16,7 @@ class GameMenu(private val parentPane: Pane) {
   fun open() {
     if (component != null) return
 
-    val fxmlLoader = FXMLLoader(javaClass.getResource(LocalResource.Layout.GAME_MENU))
-    component = fxmlLoader.load()
+    component =  FXMLLoader.load<Region>(LocalResource.Layout.GAME_MENU.url())
     component!!.setBackgroundColor("#FFFFFF")
     StackPane.setAlignment(component, Pos.CENTER_LEFT);
 

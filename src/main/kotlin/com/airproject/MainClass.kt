@@ -15,8 +15,7 @@ class MainClass : Application() {
 
     ApplicationBindings.createBinding()
 
-    val fxmlLoader = FXMLLoader(javaClass.getResource(LocalResource.Layout.MAIN_VIEW))
-    val region: Region = fxmlLoader.load()
+    val region: Region = FXMLLoader.load(LocalResource.Layout.MAIN_VIEW.url())
 
     //Creating a scene object
     val scene = Scene(region, 600.0, 400.0)

@@ -1,12 +1,15 @@
-package com.airproject
+package com.airproject.gameview
 
+import com.airproject.binding.getService
 import com.airproject.common.LocalResource
 import com.airproject.data.store.airport.AirportStore
+import com.airproject.event.INotificationService
 import com.airproject.fxcomponent.imageButton
 import com.airproject.fxcomponent.setBackgroundColor
 import com.airproject.view.GameMap
 import com.airproject.view.dynamicimage.MapCanvas
 import javafx.fxml.FXML
+import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
 import javafx.scene.control.ListView
 import javafx.scene.image.Image
@@ -14,7 +17,7 @@ import javafx.scene.layout.GridPane
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Pane
 
-class MainViewController {
+class GameViewController  {
   @FXML private lateinit var mainGrid: GridPane
   @FXML private lateinit var mainPane: Pane
   @FXML private lateinit var flagButton: Button
@@ -43,4 +46,17 @@ class MainViewController {
 
     mainPane.children.add(canvas)
   }
+
+  @FXML
+  fun planeButtonClicked() {
+    val notificationService:INotificationService = getService()
+    println("Plane button clicked $notificationService")
+
+    notificationService.notifyEvent(MenuActionEvent.ShowPlanes)
+
+    val fxmlLoader = FXMLLoader(javaClass.getResource(LocalResource.Layout.PLANE_MAIN))
+
+
+  }
+
 }

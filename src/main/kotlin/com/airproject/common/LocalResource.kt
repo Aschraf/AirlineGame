@@ -7,12 +7,13 @@ object LocalResource {
     const val AIRLINE_FLAG = "image/airline_flag.jpg"
   }
 
-  object Map{
+  object Map {
     const val AIRPORT = "/map/airport.csv"
   }
 
-  object  Layout{
+  object Layout {
     const val MAIN_VIEW = "/layout/MainView.fxml"
+    const val PLANE_MAIN = "/layout/ShopPlain.fxml"
   }
 
   object Icon {

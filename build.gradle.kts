@@ -39,6 +39,7 @@ repositories {
 dependencies {
   implementation(kotlin("stdlib"))
 
+  implementation("org.koin:koin-core:2.2.2")
   implementation("com.jfoenix:jfoenix:9.0.10")
 
 }

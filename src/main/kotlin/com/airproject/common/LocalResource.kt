@@ -13,7 +13,7 @@ object LocalResource {
 
   object Layout {
     const val MAIN_VIEW = "/layout/MainView.fxml"
-    const val PLANE_MAIN = "/layout/ShopPlain.fxml"
+    const val GAME_MENU = "/layout/GameMenu.fxml"
   }
 
   object Icon {

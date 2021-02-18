@@ -1,5 +1,7 @@
 package com.airproject.binding
 
+import com.airproject.data.store.airport.AirportStore
+import com.airproject.data.store.airport.IAirportStore
 import com.airproject.event.INotificationService
 import com.airproject.event.NotificationService
 import org.koin.core.KoinApplication
@@ -11,13 +13,14 @@ object ApplicationBindings {
   lateinit var application: KoinApplication
   fun createBinding() {
     application = startKoin {
-      // use Koin logger
-      printLogger()
-
       // declare modules
       modules(
           module {
+            // Services
             single<INotificationService> { NotificationService() }
+
+            // Stores
+            single<IAirportStore> { AirportStore() }
           }
       )
 

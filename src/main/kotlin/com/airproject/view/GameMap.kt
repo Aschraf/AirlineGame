@@ -1,7 +1,9 @@
 package com.airproject.view
 
+import com.airproject.binding.getService
 import com.airproject.data.store.airport.AirportPojo
-import com.airproject.data.store.airport.AirportStore
+import com.airproject.data.store.airport.IAirportStore
+import com.airproject.event.INotificationService
 import com.airproject.util.setOnPrimaryMouseClicked
 import com.airproject.view.dynamicimage.MapCanvas
 import com.airproject.view.dynamicimage.MapComponent
@@ -25,12 +27,12 @@ data class AirportWithComponent(
     component.node.fill = if (isSelected) Color.BLUE else Color.BLACK
   }
 
-
 }
 
 class GameMap(
     private val canvas: MapCanvas,
-    private val airportStore: AirportStore,
+    private val airportStore: IAirportStore,
+    private val notificationService: INotificationService = getService(),
 ) {
 
   private val airportComponents = mutableListOf<AirportWithComponent>()
@@ -48,9 +50,9 @@ class GameMap(
       val mapComponent = MapComponent(node, locX.toInt(), locY.toInt())
       val airportComponent = AirportWithComponent(it, mapComponent)
 
-      node.setOnPrimaryMouseClicked { e  ->
-          updateSelection(airportComponent)
-          e.consume()
+      node.setOnPrimaryMouseClicked { e ->
+        updateSelection(airportComponent)
+        e.consume()
       }
 
 
@@ -59,8 +61,11 @@ class GameMap(
     }
 
 
+
+
     canvas.setOnPrimaryMouseClicked { e ->
-        updateSelection(null)
+      updateSelection(null)
+      notificationService.notifyEvent(MapEvent.MapLeftClick)
     }
   }
 

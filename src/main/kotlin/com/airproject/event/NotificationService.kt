@@ -15,6 +15,7 @@ class NotificationService : INotificationService {
   }
 
   override fun notifyEvent(event: IEvent) {
+    println("Notification $event")
     listeners.forEach { it.handle(event) }
   }
 }

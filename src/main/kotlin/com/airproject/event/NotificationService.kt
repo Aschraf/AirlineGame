@@ -1,5 +1,8 @@
 package com.airproject.event
 
+import com.airproject.util.logger
+import org.slf4j.Logger
+
 
 interface INotificationService {
   fun addListener(notificationListener: INotificationListener)
@@ -8,6 +11,8 @@ interface INotificationService {
 }
 
 class NotificationService : INotificationService {
+  private val logger: Logger = logger()
+
   private val listeners = mutableListOf<INotificationListener>()
 
   override fun addListener(notificationListener: INotificationListener) {
@@ -15,7 +20,7 @@ class NotificationService : INotificationService {
   }
 
   override fun notifyEvent(event: IEvent) {
-    println("Notification $event")
+    logger.debug("Notification $event")
     listeners.forEach { it.handle(event) }
   }
 }

@@ -39,7 +39,15 @@ repositories {
 dependencies {
   implementation(kotlin("stdlib"))
 
+  // Dependency
   implementation("org.koin:koin-core:2.2.2")
+
+
+  // Logging
+  implementation("ch.qos.logback:logback-core:1.2.3")
+  implementation("ch.qos.logback:logback-classic:1.2.3")
+  implementation("org.slf4j:slf4j-api:1.7.30")
+
   implementation("com.jfoenix:jfoenix:9.0.10")
 
 }

@@ -1,6 +1,6 @@
 package com.airproject.gameview
 
-import com.airproject.common.LocalResource
+import com.airproject.common.ResourceStore
 import com.airproject.fxcomponent.setBackgroundColor
 import javafx.animation.TranslateTransition
 import javafx.fxml.FXMLLoader
@@ -16,7 +16,7 @@ class GameMenu(private val parentPane: Pane) {
   fun open() {
     if (component != null) return
 
-    component =  FXMLLoader.load<Region>(LocalResource.Layout.GAME_MENU.url())
+    component =  FXMLLoader.load<Region>(ResourceStore.Layout.GAME_MENU.url())
     component!!.setBackgroundColor("#FFFFFF")
     StackPane.setAlignment(component, Pos.CENTER_LEFT);
 

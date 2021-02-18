@@ -1,7 +1,7 @@
 package com.airproject.gameview
 
 import com.airproject.binding.getService
-import com.airproject.common.LocalResource
+import com.airproject.common.ResourceStore
 import com.airproject.fxcomponent.imageButton
 import com.airproject.fxcomponent.setBackgroundColor
 import com.airproject.view.GameMap
@@ -25,7 +25,7 @@ class GameViewController {
 
   @FXML
   fun initialize() {
-    val image = javaClass.classLoader.getResourceAsStream(LocalResource.Image.EARTH_MAP)?.let { Image(it) }
+    val image = ResourceStore.Image.EARTH_MAP.getResourceStream()?.let { Image(it) }
         ?: throw IllegalStateException("Unable to load map")
 
     val canvas = MapCanvas(parent = mapPane, image = image)
@@ -33,7 +33,7 @@ class GameViewController {
     GameMap(canvas, getService()).loadAll()
 
 
-    flagButton.imageButton(Image(javaClass.classLoader.getResourceAsStream(LocalResource.Image.AIRLINE_FLAG)), 200.0, 100.0)
+    flagButton.imageButton(Image(ResourceStore.Image.AIRLINE_FLAG.getResourceStream()), 200.0, 100.0)
 
     upperBar.setBackgroundColor("#FFFFFF")
     upperBar.style += "-fx-border-color: #D8D8D8; -fx-border-width: 1px;"

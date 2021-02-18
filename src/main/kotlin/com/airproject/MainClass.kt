@@ -1,7 +1,7 @@
 package com.airproject
 
 import com.airproject.binding.ApplicationBindings
-import com.airproject.common.LocalResource
+import com.airproject.common.ResourceStore
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
@@ -15,7 +15,7 @@ class MainClass : Application() {
 
     ApplicationBindings.createBinding()
 
-    val region: Region = FXMLLoader.load(LocalResource.Layout.MAIN_VIEW.url())
+    val region: Region = FXMLLoader.load(ResourceStore.Layout.MAIN_VIEW.url())
 
     //Creating a scene object
     val scene = Scene(region, 600.0, 400.0)

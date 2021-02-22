@@ -1,12 +1,13 @@
 package com.airproject.common
 
+import java.io.InputStream
 import java.net.URL
 
 interface ILocalResource {
   val path: String
 
   fun url(): URL = this::class.java.getResource(path)
-  fun getResourceStream() = javaClass.classLoader.getResourceAsStream(path)
+  fun getResourceStream(): InputStream? = javaClass.classLoader.getResourceAsStream(path)
 }
 
 object ResourceStore {
@@ -23,7 +24,9 @@ object ResourceStore {
   }
 
   enum class Map(override val path: String) : ILocalResource {
-    AIRPORT("/map/airport.csv"),
+    AIRPORT("/common/airport.csv"),
+    AIRPLANE("/common/planes.csv"),
+    MANUFACTURER("/common/manufacturer.csv"),
   }
 
 }

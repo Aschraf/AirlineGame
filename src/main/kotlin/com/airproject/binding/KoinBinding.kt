@@ -2,6 +2,10 @@ package com.airproject.binding
 
 import com.airproject.data.store.airport.AirportStore
 import com.airproject.data.store.airport.IAirportStore
+import com.airproject.data.store.manufacturer.IManufacturerStore
+import com.airproject.data.store.manufacturer.ManufacturerStore
+import com.airproject.data.store.plane.AirplaneStore
+import com.airproject.data.store.plane.IAirplaneStore
 import com.airproject.event.INotificationService
 import com.airproject.event.NotificationService
 import org.koin.core.KoinApplication
@@ -21,6 +25,8 @@ object ApplicationBindings {
 
             // Stores
             single<IAirportStore> { AirportStore() }
+            single<IAirplaneStore> { AirplaneStore() }
+            single<IManufacturerStore> { ManufacturerStore() }
           }
       )
 

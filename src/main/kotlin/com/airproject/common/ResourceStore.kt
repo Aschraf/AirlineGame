@@ -12,9 +12,10 @@ interface ILocalResource {
 
 object ResourceStore {
   enum class Image(override val path: String) : ILocalResource {
-    EARTH_MAP("image/earth_map.jpg"),
-    GRID("image/grid.png"),
-    AIRLINE_FLAG("image/airline_flag.jpg"),
+    EARTH_MAP("images/earth_map.jpg"),
+    GRID("images/grid.png"),
+    AIRLINE_FLAG("images/airline_flag.jpg"),
+    BOEING_LOGO("images/manufacturer/boeing.svg"),
   }
 
   enum class Layout(override val path: String) : ILocalResource {

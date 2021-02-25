@@ -7,7 +7,18 @@ import com.airproject.util.FileUtil
 interface IAirplaneStore : ILocalStore<AirplanePojo>
 
 class AirplaneStore : IAirplaneStore {
-  override val content: List<AirplanePojo> = FileUtil.loadCsvFile(ResourceStore.Map.AIRPLANE.path, 6) {
-    AirplanePojo(it[0], it[1], it[2].toInt(), it[3].toInt(), it[4].toInt(), it[5].toInt())
+  override val content: List<AirplanePojo> = FileUtil.loadCsvFile(ResourceStore.Map.AIRPLANE.path, 9) {
+    var counter = 0
+    AirplanePojo(
+      manufacturer = it[counter++],
+      modelName = it[counter++],
+      image = it[counter++],
+      price = (it[counter++].toDouble() * 1_000_000).toInt(),
+      launchYear = it[counter++].toInt(),
+      maxSeat = it[counter++].toInt(),
+      speed = it[counter++].toInt(),
+      range = it[counter++].toInt(),
+      consumption = it[counter++].toFloat(),
+    )
   }
 }

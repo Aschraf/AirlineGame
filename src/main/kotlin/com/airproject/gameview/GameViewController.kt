@@ -2,8 +2,11 @@ package com.airproject.gameview
 
 import com.airproject.binding.getService
 import com.airproject.common.ResourceStore
+import com.airproject.event.GameWideEvent
+import com.airproject.event.INotificationService
 import com.airproject.fxcomponent.imageButton
 import com.airproject.fxcomponent.setBackgroundColor
+import com.airproject.gameview.actionpanel.ActionPanel
 import com.airproject.view.GameMap
 import com.airproject.view.dynamicimage.MapCanvas
 import javafx.fxml.FXML
@@ -21,7 +24,9 @@ class GameViewController {
   @FXML private lateinit var flagButton: Button
   @FXML private lateinit var upperBar: HBox
   @FXML private lateinit var anchorPane: AnchorPane
-  private lateinit var gameMenu: GameMenu
+  private lateinit var gameMenu: ActionPanel
+
+  private val notificationService:INotificationService  = getService()
 
   @FXML
   fun initialize() {
@@ -40,12 +45,12 @@ class GameViewController {
 
     mapPane.children.add(canvas)
 
-    gameMenu = GameMenu(anchorPane)
+    gameMenu = ActionPanel(anchorPane)
 
 
     mainPane.setOnKeyPressed {
       if (it.code == KeyCode.ESCAPE) {
-        gameMenu.close()
+        notificationService.notifyEvent(GameWideEvent.EscapePressed)
       }
     }
   }

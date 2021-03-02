@@ -1,0 +1,17 @@
+/* Colors from https://material.io/resources/color/ */
+
+.root {
+    -primary-color: #2196F3;
+    -primary-color-light: #75CCFF;
+    -primary-color-dark: #0064BA;
+    -on-primary: #FFFFFF;
+
+
+    -secondary-color: #F37F21;
+    -secondary-color-light: #FFB458;
+    -secondary-color-dark: #B44A00;
+    -on-secondary: #000000;
+
+    -red-color: #D32F2F;
+    -green-color: #388E3C;
+}

@@ -1,30 +1,24 @@
 package com.airproject.gameview
 
-import com.airproject.common.ResourceStore
+import com.airproject.binding.getService
 import com.airproject.data.store.manufacturer.IManufacturerPlaneStore
-import com.airproject.data.store.manufacturer.ManufacturerPlaneStore
 import com.airproject.data.store.manufacturer.ManufacturerPlanes
-import com.airproject.data.store.manufacturer.ManufacturerStore
 import com.airproject.data.store.plane.AirplanePojo
-import com.airproject.data.store.plane.AirplaneStore
 import com.airproject.fxcomponent.IconListCell
-import com.airproject.fxcomponent.load
 import com.airproject.util.NumberFormatter
 import com.jfoenix.controls.JFXListView
 import de.codecentric.centerdevice.javafxsvg.SvgImageLoaderFactory
-import javafx.application.Application
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.Label
 import javafx.scene.control.ListCell
 import javafx.scene.image.ImageView
 import javafx.scene.layout.Pane
-import javafx.stage.Stage
 import javafx.util.Callback
 
 
 class BuyPlaneController(
-    private val manufacturerPlaneStore: IManufacturerPlaneStore,
+    private val manufacturerPlaneStore: IManufacturerPlaneStore = getService(),
 ) {
   @FXML
   private lateinit var mainList: JFXListView<ManufacturerPlanes>
@@ -129,16 +123,16 @@ class PlaneCellStyleFactory : ListCell<AirplanePojo>() {
 
 
 fun main() {
-  class PlaneBuyApplication : Application() {
-    override fun start(primaryStage: Stage) {
-      val controller = BuyPlaneController(ManufacturerPlaneStore(ManufacturerStore(), AirplaneStore()))
-      val scene = ResourceStore.Layout.BUY_PLANE_LAYOUT.load(controller)
-
-      primaryStage.scene = scene
-      primaryStage.show()
-    }
-
-  }
-
-  Application.launch(PlaneBuyApplication::class.java)
+//  class PlaneBuyApplication : Application() {
+//    override fun start(primaryStage: Stage) {
+//      val controller = BuyPlaneController(ManufacturerPlaneStore(ManufacturerStore(), AirplaneStore()))
+//      val scene = ResourceStore.Layout.BUY_PLANE_LAYOUT.load(controller)
+//
+//      primaryStage.scene = scene
+//      primaryStage.show()
+//    }
+//
+//  }
+//
+//  Application.launch(PlaneBuyApplication::class.java)
 }

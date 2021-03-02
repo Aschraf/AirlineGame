@@ -1,0 +1,70 @@
+@import "colors.css";
+
+.menu-button {
+    -fx-font-size: 16px;
+    -jfx-button-type: FLAT;
+    -fx-text-fill: BLACK;
+    -fx-background-color: TRANSPARENT;
+    -fx-pref-height: 41px;
+    -fx-pref-width: 40px;
+}
+
+
+.menu-pane{
+    -fx-background-color: WHITE;
+}
+
+
+.menu-tab {
+    -fx-tab-min-height: 40;
+    -fx-tab-max-height: 40;
+    -fx-tab-min-width: 140;
+    -fx-tab-max-width: 140;
+}
+
+.menu-tab .tab-header-area {
+    /* Nothing special */
+}
+
+/* Region on tob where there are tabs */
+.menu-tab .headers-region {
+    -fx-border-color: rgba(0, 0, 0, .12);
+    -fx-border-width: 0 0 1 0;
+}
+
+/* Region on top beside the tabs */
+.menu-tab .tab-header-background {
+    -fx-background-color: -primary-color;
+}
+
+.menu-tab .tab-selected-line {
+    -fx-background-color: -secondary-color;
+    -fx-pref-height: 4;
+}
+
+.menu-tab .tab {
+    -fx-background-color: -primary-color;
+}
+
+.menu-tab .tab .tab-label {
+    /*-fx-text-fill: #383838;*/
+    -fx-text-fill: -on-primary;
+    -fx-font-size: 16;
+    -fx-alignment: CENTER;
+    -fx-font-weight: normal;
+}
+
+.menu-tab .tab:selected {
+    -fx-background-color: -primary-color;
+}
+
+.menu-tab .tab:selected .tab-label {
+    -fx-text-fill: -on-primary;
+    -fx-font-size: 16;
+    -fx-alignment: CENTER;
+    -fx-font-weight: BOLD;
+}
+
+.menu-tab .tab-header-area .jfx-rippler {
+    -jfx-rippler-fill: -primary-color-dark;
+}

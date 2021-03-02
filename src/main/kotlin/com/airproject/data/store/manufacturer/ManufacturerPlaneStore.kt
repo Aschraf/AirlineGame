@@ -19,7 +19,7 @@ class ManufacturerPlaneStore(
      return planeStore.content
         .groupBy { it.manufacturer }
         .mapKeys { (key, _) -> manufacturers.first { it.id == key } }
-        .map { (manu, planes) -> ManufacturerPlanes(manu, planes)  }
+        .map { (manufacturer, planes) -> ManufacturerPlanes(manufacturer, planes)  }
     }
 }
 

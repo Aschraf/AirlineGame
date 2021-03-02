@@ -2,7 +2,9 @@ package com.airproject.binding
 
 import com.airproject.data.store.airport.AirportStore
 import com.airproject.data.store.airport.IAirportStore
+import com.airproject.data.store.manufacturer.IManufacturerPlaneStore
 import com.airproject.data.store.manufacturer.IManufacturerStore
+import com.airproject.data.store.manufacturer.ManufacturerPlaneStore
 import com.airproject.data.store.manufacturer.ManufacturerStore
 import com.airproject.data.store.plane.AirplaneStore
 import com.airproject.data.store.plane.IAirplaneStore
@@ -27,6 +29,7 @@ object ApplicationBindings {
             single<IAirportStore> { AirportStore() }
             single<IAirplaneStore> { AirplaneStore() }
             single<IManufacturerStore> { ManufacturerStore() }
+            single<IManufacturerPlaneStore> { ManufacturerPlaneStore(get(), get()) }
           }
       )
 

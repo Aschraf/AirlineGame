@@ -15,31 +15,12 @@ class MainClass : Application() {
 
     ApplicationBindings.createBinding()
 
-//    val desktopPane = DesktopPane()
-//    val newWindow = Button("New Window")
-//    var count = 0
-//    newWindow.setOnAction { e ->
-//      val window = InternalWindow(
-//          "window-$count",
-//          FontIcon("mdi-application:20"),
-//          "Title " + count++,
-//          Label("Content")
-//      )
-//      desktopPane.addInternalWindow(window)
-//    }
-//
-//    val mainPane = BorderPane()
-//    mainPane.setPrefSize(800.0, 600.0)
-//    mainPane.top = newWindow
-//    mainPane.center = desktopPane
-//
-//    stage.scene = Scene(mainPane)
-//    stage.show()
 
     val region: Region = FXMLLoader.load(ResourceStore.Layout.MAIN_VIEW.url())
 
     //Creating a scene object
     val scene = Scene(region, 600.0, 400.0)
+    scene.stylesheets.add(ResourceStore.stylesheet)
 
     //Adding scene to the stage
     stage.scene = scene

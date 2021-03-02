@@ -20,7 +20,7 @@ object ResourceStore {
 
   enum class Layout(override val path: String) : ILocalResource {
     MAIN_VIEW("/layout/MainView.fxml"),
-    GAME_MENU("/layout/GameMenu.fxml"),
+    ACTION_PANEL("/layout/ActionPanel.fxml"),
     BUY_PLANE_LAYOUT("/layout/BuyPlaneView.fxml"),
   }
 

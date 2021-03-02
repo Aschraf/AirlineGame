@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  verify_windows:
-    runs-on: windows-latest
+  check:
+    runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
@@ -19,15 +19,15 @@ jobs:
         with:
           java-version: 11
 
-      # Cache: https://github.com/actions/cache
       - name: Gradle cache
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          key: gradle-cache-v2-${{ matrix.project }}-${{ hashFiles('gradle.properties') }}-${{ hashFiles('gradle-plugins/**.kt*') }}-${{ hashFiles(format('{0}/**/*.kt*', matrix.project)) }}
           restore-keys: |
-            ${{ runner.os }}-gradle-
+            gradle-cache-v2-${{ matrix.project }}-${{ hashFiles('gradle.properties') }}-${{ hashFiles('gradle-plugins/**.kt*') }}
+            gradle-cache-v2-${{ matrix.project }}-${{ hashFiles('gradle.properties') }}
       - name: Check the project
         run: ./gradlew check

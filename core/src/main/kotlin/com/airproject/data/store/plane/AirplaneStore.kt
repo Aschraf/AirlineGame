@@ -18,7 +18,7 @@ class AirplaneStore : IAirplaneStore {
       maxSeat = it[counter++].toInt(),
       speed = it[counter++].toInt(),
       range = it[counter++].toInt(),
-      consumption = it[counter++].toFloat(),
+      consumption = it[counter].toFloat(),
     )
   }
 }

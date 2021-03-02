@@ -136,13 +136,9 @@ complexity:
 coroutines:
   active: true
   GlobalCoroutineUsage:
-    active: false
+    active: true
   RedundantSuspendModifier:
-    active: false
-  SleepInsteadOfDelay:
-    active: false
-  SuspendFunWithFlowReturnType:
-    active: false
+    active: true
 
 empty-blocks:
   active: true
@@ -473,8 +469,6 @@ potential-bugs:
     active: true
   EqualsWithHashCodeExist:
     active: true
-  ExitOutsideMain:
-    active: false
   ExplicitGarbageCollectionCall:
     active: true
   HasPlatformType:
@@ -535,10 +529,7 @@ style:
     active: false
     conversionFunctionPrefix: 'to'
   DataClassShouldBeImmutable:
-    active: false
-  DestructuringDeclarationWithTooManyEntries:
-    active: false
-    maxDestructuringEntries: 3
+    active: true
   EqualsNullCall:
     active: true
   EqualsOnSignatureLine:
@@ -546,21 +537,21 @@ style:
   ExplicitCollectionElementAccessMethod:
     active: false
   ExplicitItLambdaParameter:
-    active: false
+    active: true
   ExpressionBodySyntax:
     active: false
     includeLineWrapping: false
   ForbiddenComment:
     active: true
     values: ['TODO:', 'FIXME:', 'STOPSHIP:']
-    allowedPatterns: ''
+    allowedPatterns: '#\d+'
   ForbiddenImport:
     active: false
     imports: []
     forbiddenPatterns: ''
   ForbiddenMethodCall:
-    active: false
-    methods: ['kotlin.io.println', 'kotlin.io.print']
+    active: true
+    methods: ['kotlin.io.println', 'kotlin.io.print', 'kotlin.TODO']
   ForbiddenPublicDataClass:
     active: true
     excludes: ['**']
@@ -572,7 +563,6 @@ style:
   FunctionOnlyReturningConstant:
     active: true
     ignoreOverridableFunction: true
-    ignoreActualFunction: true
     excludedFunctions: 'describeContents'
     excludeAnnotatedFunction: ['dagger.Provides']
   LibraryCodeMustSpecifyReturnType:
@@ -611,8 +601,6 @@ style:
     active: true
   ModifierOrder:
     active: true
-  MultilineLambdaItParameter:
-    active: false
   NestedClassesVisibility:
     active: true
   NewLineAtEndOfFile:
@@ -622,11 +610,11 @@ style:
   OptionalAbstractKeyword:
     active: true
   OptionalUnit:
-    active: false
+    active: true
   OptionalWhenBraces:
     active: false
   PreferToOverPairSyntax:
-    active: false
+    active: true
   ProtectedMemberInFinalClass:
     active: true
   RedundantExplicitType:

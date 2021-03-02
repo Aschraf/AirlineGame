@@ -63,7 +63,7 @@ class MapComponentsHandler(
 
 
 
-    canvas.setOnPrimaryMouseClicked { e ->
+    canvas.setOnPrimaryMouseClicked {
       updateSelection(null)
       notificationService.notifyEvent(MapEvent.MapLeftClick)
     }

@@ -22,6 +22,8 @@ class MainClass : Application() {
     val scene = Scene(region, 600.0, 400.0)
     scene.stylesheets.add(ResourceStore.stylesheet)
 
+    println("Craap")
+
     //Adding scene to the stage
     stage.scene = scene
 

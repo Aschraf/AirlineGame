@@ -8,14 +8,13 @@ import com.airproject.data.store.manufacturer.ManufacturerStore
 import com.airproject.data.store.plane.AirplanePojo
 import com.airproject.data.store.plane.AirplaneStore
 import com.airproject.fxcomponent.IconListCell
+import com.airproject.fxcomponent.load
 import com.airproject.util.NumberFormatter
 import com.jfoenix.controls.JFXListView
 import de.codecentric.centerdevice.javafxsvg.SvgImageLoaderFactory
 import javafx.application.Application
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
-import javafx.fxml.FXMLLoader
-import javafx.scene.Scene
 import javafx.scene.control.Label
 import javafx.scene.control.ListCell
 import javafx.scene.image.ImageView
@@ -25,22 +24,41 @@ import javafx.util.Callback
 
 
 class BuyPlaneController(
-  private val manufacturerPlaneStore: IManufacturerPlaneStore,
+    private val manufacturerPlaneStore: IManufacturerPlaneStore,
 ) {
-  @FXML private lateinit var mainList: JFXListView<ManufacturerPlanes>
-  @FXML private lateinit var childList: JFXListView<AirplanePojo>
+  @FXML
+  private lateinit var mainList: JFXListView<ManufacturerPlanes>
+
+  @FXML
+  private lateinit var childList: JFXListView<AirplanePojo>
 
   // Details
-  @FXML private lateinit var planeDetailPane: Pane
-  @FXML private lateinit var planeNameLabel: Label
-  @FXML private lateinit var planeImageView: ImageView
+  @FXML
+  private lateinit var planeDetailPane: Pane
 
-  @FXML private lateinit var typeLabel: Label
-  @FXML private lateinit var priceLabel: Label
-  @FXML private lateinit var rangeLabel: Label
-  @FXML private lateinit var speedLabel: Label
-  @FXML private lateinit var seatsLabel: Label
-  @FXML private lateinit var consumptionLabel: Label
+  @FXML
+  private lateinit var planeNameLabel: Label
+
+  @FXML
+  private lateinit var planeImageView: ImageView
+
+  @FXML
+  private lateinit var typeLabel: Label
+
+  @FXML
+  private lateinit var priceLabel: Label
+
+  @FXML
+  private lateinit var rangeLabel: Label
+
+  @FXML
+  private lateinit var speedLabel: Label
+
+  @FXML
+  private lateinit var seatsLabel: Label
+
+  @FXML
+  private lateinit var consumptionLabel: Label
 
 
   @FXML
@@ -93,8 +111,8 @@ class ManufacturerCellStyleFactory : ListCell<ManufacturerPlanes>() {
     graphic = item?.let {
 
       IconListCell(
-        leftIcon = it.manufacturerPojo.loadLogo(),
-        text = it.manufacturerPojo.id
+          leftIcon = it.manufacturerPojo.loadLogo(),
+          text = it.manufacturerPojo.id
       )
     }
   }
@@ -113,9 +131,8 @@ class PlaneCellStyleFactory : ListCell<AirplanePojo>() {
 fun main() {
   class PlaneBuyApplication : Application() {
     override fun start(primaryStage: Stage) {
-      val loader = FXMLLoader(ResourceStore.Layout.BUY_PLANE_LAYOUT.url())
-      loader.setController(BuyPlaneController(ManufacturerPlaneStore(ManufacturerStore(), AirplaneStore())))
-      val scene = Scene(loader.load())
+      val controller = BuyPlaneController(ManufacturerPlaneStore(ManufacturerStore(), AirplaneStore()))
+      val scene = ResourceStore.Layout.BUY_PLANE_LAYOUT.load(controller)
 
       primaryStage.scene = scene
       primaryStage.show()

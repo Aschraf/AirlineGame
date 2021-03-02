@@ -30,5 +30,6 @@ object ResourceStore {
     MANUFACTURER("/common/manufacturer.csv"),
   }
 
+  const val stylesheet = "/style/AppStyle.css"
 }
 

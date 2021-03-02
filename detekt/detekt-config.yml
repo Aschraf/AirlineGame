@@ -529,7 +529,7 @@ style:
     active: false
     conversionFunctionPrefix: 'to'
   DataClassShouldBeImmutable:
-    active: true
+    active: false
   EqualsNullCall:
     active: true
   EqualsOnSignatureLine:
@@ -593,7 +593,7 @@ style:
     active: false
   MaxLineLength:
     active: true
-    maxLineLength: 120
+    maxLineLength: 200
     excludePackageStatements: true
     excludeImportStatements: true
     excludeCommentStatements: false

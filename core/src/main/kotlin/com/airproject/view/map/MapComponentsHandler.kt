@@ -17,6 +17,7 @@ data class AirportWithComponent(
     val airportPojo: AirportPojo,
     val component: MapComponent<Circle>,
 ) {
+
   var isSelected: Boolean = false
     set(value) {
       field = value
@@ -29,6 +30,7 @@ data class AirportWithComponent(
 
 }
 
+@Suppress("MagicNumber")
 class MapComponentsHandler(
     private val canvas: MapCanvas,
     private val airportStore: IAirportStore,

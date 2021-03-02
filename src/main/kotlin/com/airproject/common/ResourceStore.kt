@@ -14,7 +14,6 @@ object ResourceStore {
   enum class Image(override val path: String) : ILocalResource {
     EARTH_MAP("images/earth_map.jpg"),
     GRID("images/grid.png"),
-    AIRLINE_FLAG("images/airline_flag.jpg"),
     BOEING_LOGO("images/manufacturer/boeing.svg"),
   }
 

@@ -38,7 +38,9 @@ class ActionPanel(
     val buyPlaneTab = Tab("Buy")
     buyPlaneTab.content = ResourceStore.Layout.BUY_PLANE_LAYOUT.loadRegion(BuyPlaneController())
 
-    tabPane.tabs.add(buyPlaneTab)
+    val dummyTab = Tab("Dummy")
+
+    tabPane.tabs.addAll(buyPlaneTab, dummyTab)
   }
 
   private fun loadPanel(): Region {

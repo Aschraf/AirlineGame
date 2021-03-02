@@ -12,7 +12,6 @@
 
     <Pane fx:id="mapPane"/>
     <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pickOnBounds="false">
-        <JFXButton fx:id="flagButton" GridPane.rowSpan="2"/>
         <HBox fx:id="upperBar" maxHeight="30.0" GridPane.columnIndex="1" GridPane.vgrow="NEVER">
             <JFXButton maxHeight="1.7976931348623157E308" text="Cash"/>
             <JFXButton maxHeight="1.7976931348623157E308" onMouseClicked="#planeButtonClicked" text="Planes"/>

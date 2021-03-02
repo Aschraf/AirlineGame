@@ -1,8 +1,8 @@
-package com.airproject.gameview.actionpanel
+package com.airproject.view.actionpanel
 
 import com.airproject.common.ResourceStore
 import com.airproject.fxcomponent.loadRegion
-import com.airproject.gameview.BuyPlaneController
+import com.airproject.view.actionpanel.actions.BuyPlaneController
 import javafx.fxml.FXML
 import javafx.scene.control.Tab
 import javafx.scene.control.TabPane

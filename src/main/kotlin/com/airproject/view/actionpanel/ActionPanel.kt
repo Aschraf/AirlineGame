@@ -1,11 +1,11 @@
-package com.airproject.gameview.actionpanel
+package com.airproject.view.actionpanel
 
 import com.airproject.binding.getService
 import com.airproject.common.ResourceStore
-import com.airproject.event.GameWideEvent
-import com.airproject.event.INotificationService
 import com.airproject.fxcomponent.loadRegion
-import com.airproject.gameview.BuyPlaneController
+import com.airproject.notification.GameWideEvent
+import com.airproject.notification.INotificationService
+import com.airproject.view.actionpanel.actions.BuyPlaneController
 import javafx.animation.TranslateTransition
 import javafx.fxml.FXML
 import javafx.geometry.Pos

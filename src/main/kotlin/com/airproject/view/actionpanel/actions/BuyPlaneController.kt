@@ -1,4 +1,4 @@
-package com.airproject.gameview
+package com.airproject.view.actionpanel.actions
 
 import com.airproject.binding.getService
 import com.airproject.data.store.manufacturer.IManufacturerPlaneStore

@@ -8,8 +8,8 @@ import com.airproject.data.store.manufacturer.ManufacturerPlaneStore
 import com.airproject.data.store.manufacturer.ManufacturerStore
 import com.airproject.data.store.plane.AirplaneStore
 import com.airproject.data.store.plane.IAirplaneStore
-import com.airproject.event.INotificationService
-import com.airproject.event.NotificationService
+import com.airproject.notification.INotificationService
+import com.airproject.notification.NotificationService
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.dsl.module

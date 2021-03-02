@@ -2,12 +2,12 @@ package com.airproject.gameview
 
 import com.airproject.binding.getService
 import com.airproject.common.ResourceStore
-import com.airproject.event.GameWideEvent
-import com.airproject.event.INotificationService
 import com.airproject.fxcomponent.setBackgroundColor
-import com.airproject.gameview.actionpanel.ActionPanel
-import com.airproject.view.GameMap
+import com.airproject.notification.GameWideEvent
+import com.airproject.notification.INotificationService
+import com.airproject.view.actionpanel.ActionPanel
 import com.airproject.view.dynamicimage.MapCanvas
+import com.airproject.view.map.MapComponentsHandler
 import javafx.fxml.FXML
 import javafx.scene.image.Image
 import javafx.scene.input.KeyCode
@@ -32,7 +32,7 @@ class GameViewController {
 
     val canvas = MapCanvas(parent = mapPane, image = image)
 
-    GameMap(canvas, getService()).loadAll()
+    MapComponentsHandler(canvas, getService()).loadAll()
 
     upperBar.setBackgroundColor("#FFFFFF")
     upperBar.style += "-fx-border-color: #D8D8D8; -fx-border-width: 1px;"

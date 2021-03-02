@@ -1,4 +1,4 @@
-package com.airproject.event
+package com.airproject.notification
 
 import com.airproject.util.logger
 import org.slf4j.Logger

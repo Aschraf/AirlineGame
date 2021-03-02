@@ -1,9 +1,9 @@
-package com.airproject.view
+package com.airproject.view.map
 
 import com.airproject.binding.getService
 import com.airproject.data.store.airport.AirportPojo
 import com.airproject.data.store.airport.IAirportStore
-import com.airproject.event.INotificationService
+import com.airproject.notification.INotificationService
 import com.airproject.util.setOnPrimaryMouseClicked
 import com.airproject.view.dynamicimage.MapCanvas
 import com.airproject.view.dynamicimage.MapComponent
@@ -29,7 +29,7 @@ data class AirportWithComponent(
 
 }
 
-class GameMap(
+class MapComponentsHandler(
     private val canvas: MapCanvas,
     private val airportStore: IAirportStore,
     private val notificationService: INotificationService = getService(),
@@ -80,6 +80,5 @@ class GameMap(
     t.showDelay = Duration(500.0)
     Tooltip.install(this, t)
   }
-
 
 }

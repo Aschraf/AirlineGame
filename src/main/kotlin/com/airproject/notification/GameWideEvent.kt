@@ -1,4 +1,4 @@
-package com.airproject.event
+package com.airproject.notification
 
 
 sealed class GameWideEvent : IEvent {

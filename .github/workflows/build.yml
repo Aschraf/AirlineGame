@@ -29,5 +29,9 @@ jobs:
           restore-keys: |
             gradle-cache-v2-${{ matrix.project }}-${{ hashFiles('gradle.properties') }}-${{ hashFiles('gradle-plugins/**.kt*') }}
             gradle-cache-v2-${{ matrix.project }}-${{ hashFiles('gradle.properties') }}
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Check the project
         run: ./gradlew check

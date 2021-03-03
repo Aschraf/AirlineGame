@@ -7,4 +7,4 @@ pluginManagement {
   }
 }
 
-include("core", "share:util", "share:view")
+include("app", "share:util", "share:view")

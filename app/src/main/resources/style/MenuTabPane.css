@@ -47,7 +47,6 @@
 }
 
 .menu-tab .tab .tab-label {
-    /*-fx-text-fill: #383838;*/
     -fx-text-fill: -on-primary;
     -fx-font-size: 16;
     -fx-alignment: CENTER;

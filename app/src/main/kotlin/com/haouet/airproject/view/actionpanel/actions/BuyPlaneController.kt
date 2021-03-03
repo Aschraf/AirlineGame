@@ -120,19 +120,3 @@ class PlaneCellStyleFactory : ListCell<AirplanePojo>() {
     }
   }
 }
-
-
-fun main() {
-//  class PlaneBuyApplication : Application() {
-//    override fun start(primaryStage: Stage) {
-//      val controller = BuyPlaneController(ManufacturerPlaneStore(ManufacturerStore(), AirplaneStore()))
-//      val scene = ResourceStore.Layout.BUY_PLANE_LAYOUT.load(controller)
-//
-//      primaryStage.scene = scene
-//      primaryStage.show()
-//    }
-//
-//  }
-//
-//  Application.launch(PlaneBuyApplication::class.java)
-}

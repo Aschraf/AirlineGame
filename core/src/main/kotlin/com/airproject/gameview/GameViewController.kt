@@ -2,9 +2,9 @@ package com.airproject.gameview
 
 import com.airproject.binding.getService
 import com.airproject.common.ResourceStore
-import com.airproject.fxcomponent.setBackgroundColor
 import com.airproject.notification.GameWideEvent
 import com.airproject.notification.INotificationService
+import com.airproject.share.view.setBackgroundColor
 import com.airproject.view.actionpanel.ActionPanel
 import com.airproject.view.dynamicimage.MapCanvas
 import com.airproject.view.map.MapComponentsHandler

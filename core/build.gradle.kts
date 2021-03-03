@@ -12,11 +12,13 @@ javafx {
 }
 
 dependencies {
+  implementation(project(":share:util"))
+  implementation(project(":share:view"))
+
   // Dependency
   implementation("org.koin:koin-core:2.2.2")
 
   // FX elements
-  implementation("org.kordamp.desktoppanefx:desktoppanefx-core:0.15.0")
   implementation("de.codecentric.centerdevice:javafxsvg:1.3.0")
 
   // Logging

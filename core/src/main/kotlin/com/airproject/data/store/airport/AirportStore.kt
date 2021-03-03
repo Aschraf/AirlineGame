@@ -3,7 +3,7 @@ package com.airproject.data.store.airport
 import com.airproject.common.GcsCoordinates
 import com.airproject.common.ResourceStore
 import com.airproject.data.store.ILocalStore
-import com.airproject.util.FileUtil
+import com.airproject.share.util.FileUtil
 
 interface IAirportStore : ILocalStore<AirportPojo>
 

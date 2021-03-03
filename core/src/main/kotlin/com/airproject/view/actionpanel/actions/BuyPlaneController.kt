@@ -4,8 +4,8 @@ import com.airproject.binding.getService
 import com.airproject.data.store.manufacturer.IManufacturerPlaneStore
 import com.airproject.data.store.manufacturer.ManufacturerPlanes
 import com.airproject.data.store.plane.AirplanePojo
-import com.airproject.fxcomponent.IconListCell
-import com.airproject.util.NumberFormatter
+import com.airproject.share.util.NumberFormatter
+import com.airproject.share.view.IconListCell
 import com.jfoenix.controls.JFXListView
 import de.codecentric.centerdevice.javafxsvg.SvgImageLoaderFactory
 import javafx.collections.FXCollections

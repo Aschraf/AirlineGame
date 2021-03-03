@@ -2,7 +2,7 @@ package com.airproject.data.store.plane
 
 import com.airproject.common.ResourceStore
 import com.airproject.data.store.ILocalStore
-import com.airproject.util.FileUtil
+import com.airproject.share.util.FileUtil
 
 interface IAirplaneStore : ILocalStore<AirplanePojo>
 

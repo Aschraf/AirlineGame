@@ -1,4 +1,4 @@
-package com.airproject.fxcomponent
+package com.airproject.share.view
 
 import javafx.scene.Node
 

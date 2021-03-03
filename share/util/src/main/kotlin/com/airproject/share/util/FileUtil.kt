@@ -1,4 +1,4 @@
-package com.airproject.util
+package com.airproject.share.util
 
 object FileUtil {
   fun <T> loadCsvFile(path: String, parts: Int, convert: (List<String>) -> T) = this::class.java.getResourceAsStream(path)

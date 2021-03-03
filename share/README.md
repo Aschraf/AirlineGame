@@ -1,0 +1,1 @@
+Module with limited dependencies and classes that can be reused in other projects

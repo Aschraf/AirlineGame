@@ -1,4 +1,4 @@
-package com.airproject.fxcomponent
+package com.airproject.share.view
 
 import javafx.geometry.Pos
 import javafx.scene.control.Label

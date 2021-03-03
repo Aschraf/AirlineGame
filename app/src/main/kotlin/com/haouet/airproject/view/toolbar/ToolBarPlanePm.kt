@@ -1,7 +1,9 @@
 package com.haouet.airproject.view.toolbar
 
 import com.haouet.airproject.binding.getService
+import com.haouet.airproject.common.ResourceStore
 import com.haouet.airproject.notification.INotificationService
+import com.haouet.airproject.util.image
 import com.haouet.airproject.util.setOnPrimaryMouseClicked
 import com.haouet.airproject.view.events.ToolBoxPressedEvent
 import javafx.fxml.FXML
@@ -28,11 +30,13 @@ class ToolBarPlanePm(
     planesLabel.text = "0 / 0"
     maintenanceLabel.text = "100 %"
 
+    planesImageView.image = ResourceStore.Icon.PLANE_BLACK.getResourceStream().image()
+    maintenanceView.image = ResourceStore.Icon.GEAR_BLACK.getResourceStream().image()
+
     val t = Tooltip("Some tooltip about planes")
     Tooltip.install(mainBox, t)
 
     mainBox.setOnPrimaryMouseClicked {
-      println("Cliiiick!")
       notificationService.notifyEvent(ToolBoxPressedEvent.AirplaneToolBox)
     }
 

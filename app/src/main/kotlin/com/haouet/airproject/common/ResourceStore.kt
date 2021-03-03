@@ -14,7 +14,6 @@ object ResourceStore {
   enum class Image(override val path: String) : ILocalResource {
     EARTH_MAP("images/earth_map.jpg"),
     GRID("images/grid.png"),
-    BOEING_LOGO("images/manufacturer/boeing.svg"),
   }
 
   enum class Layout(override val path: String) : ILocalResource {
@@ -27,6 +26,11 @@ object ResourceStore {
     AIRPORT("/common/airport.csv"),
     AIRPLANE("/common/planes.csv"),
     MANUFACTURER("/common/manufacturer.csv"),
+  }
+
+  enum class Icon(override val path: String) : ILocalResource {
+    PLANE_BLACK("icons/plane.svg"),
+    GEAR_BLACK("icons/gear.svg"),
   }
 
   const val stylesheet = "/style/AppStyle.css"

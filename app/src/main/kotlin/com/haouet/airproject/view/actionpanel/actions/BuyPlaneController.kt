@@ -7,7 +7,6 @@ import com.haouet.airproject.data.store.plane.AirplanePojo
 import com.haouet.airproject.share.util.NumberFormatter
 import com.haouet.airproject.share.view.IconListCell
 import com.jfoenix.controls.JFXListView
-import de.codecentric.centerdevice.javafxsvg.SvgImageLoaderFactory
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.Label
@@ -61,9 +60,6 @@ class BuyPlaneController(
   }
 
   private fun fillList() {
-
-    SvgImageLoaderFactory.install()
-
     val content = manufacturerPlaneStore.content
 
     planeDetailPane.isVisible = false

@@ -10,19 +10,13 @@ import javafx.scene.shape.Rectangle
 
 data class MapComponent<T:Node>(val node: T, val mapX: Int, val mapY: Int)
 
-class MapCanvas(parent: Pane, image: Image) : Pane() {
+class MapCanvas(image: Image) : Pane() {
   private val imageComponent = DynamicImageView(image)
   private val mapComponents = mutableListOf<MapComponent<*>>()
 
   val imageSize = Dimension2D(image.width, image.height)
 
   init {
-    imageComponent.fitTo(parent)
-
-    // When resizing the window, we need to update the components
-    parent.widthProperty().addListener { _ -> updateComponents() }
-    parent.heightProperty().addListener { _ -> updateComponents() }
-
     imageComponent.viewPortProperty.addListener { _ ->
       updateComponents()
     }
@@ -32,6 +26,16 @@ class MapCanvas(parent: Pane, image: Image) : Pane() {
 
     children.addAll(imageComponent.imageView)
   }
+
+
+  fun fitToPane(parent: Pane) {
+    imageComponent.fitTo(parent)
+
+    // When resizing the window, we need to update the components
+    parent.widthProperty().addListener { _ -> updateComponents() }
+    parent.heightProperty().addListener { _ -> updateComponents() }
+  }
+
 
   fun addComponent(component: MapComponent<*>) {
     mapComponents.add(component)

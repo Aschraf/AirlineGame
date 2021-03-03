@@ -2,11 +2,11 @@ package com.haouet.airproject.view.actionpanel
 
 import com.haouet.airproject.binding.getService
 import com.haouet.airproject.common.ResourceStore
-import com.haouet.airproject.notification.GameWideEvent
 import com.haouet.airproject.notification.INotificationService
+import com.haouet.airproject.notification.SystemWideEvent
+import com.haouet.airproject.notification.ToolBoxPressedEvent
 import com.haouet.airproject.util.loadRegion
 import com.haouet.airproject.view.actionpanel.actions.BuyPlaneController
-import com.haouet.airproject.view.events.ToolBoxPressedEvent
 import javafx.animation.TranslateTransition
 import javafx.fxml.FXML
 import javafx.scene.control.Tab
@@ -23,7 +23,7 @@ class ActionPanelController(
   @FXML lateinit var tabPane: TabPane
 
   init {
-    notificationService.addTypeListener(GameWideEvent.EscapePressed::class) {
+    notificationService.addTypeListener(SystemWideEvent.EscapePressed::class) {
       close()
     }
 

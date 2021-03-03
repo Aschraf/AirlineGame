@@ -2,8 +2,8 @@ package com.haouet.airproject.view
 
 import com.haouet.airproject.binding.getService
 import com.haouet.airproject.common.ResourceStore
-import com.haouet.airproject.notification.GameWideEvent
 import com.haouet.airproject.notification.INotificationService
+import com.haouet.airproject.notification.SystemWideEvent
 import com.haouet.airproject.util.loadRegion
 import com.haouet.airproject.view.actionpanel.ActionPanelController
 import com.haouet.airproject.view.dynamicimage.MapCanvas
@@ -49,7 +49,7 @@ class GameView(private val notificationService: INotificationService = getServic
 
     mainPane.setOnKeyPressed {
       if (it.code == KeyCode.ESCAPE) {
-        notificationService.notifyEvent(GameWideEvent.EscapePressed)
+        notificationService.notifyEvent(SystemWideEvent.EscapePressed)
       }
     }
 

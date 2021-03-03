@@ -4,6 +4,7 @@ import com.haouet.airproject.binding.getService
 import com.haouet.airproject.data.store.airport.AirportPojo
 import com.haouet.airproject.data.store.airport.IAirportStore
 import com.haouet.airproject.notification.INotificationService
+import com.haouet.airproject.notification.MapEvent
 import com.haouet.airproject.util.setOnPrimaryMouseClicked
 import com.haouet.airproject.view.dynamicimage.MapCanvas
 import com.haouet.airproject.view.dynamicimage.MapComponent

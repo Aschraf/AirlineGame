@@ -3,9 +3,9 @@ package com.haouet.airproject.view.toolbar
 import com.haouet.airproject.binding.getService
 import com.haouet.airproject.common.ResourceStore
 import com.haouet.airproject.notification.INotificationService
+import com.haouet.airproject.notification.ToolBoxPressedEvent
 import com.haouet.airproject.util.image
 import com.haouet.airproject.util.setOnPrimaryMouseClicked
-import com.haouet.airproject.view.events.ToolBoxPressedEvent
 import javafx.fxml.FXML
 import javafx.scene.Node
 import javafx.scene.control.Label

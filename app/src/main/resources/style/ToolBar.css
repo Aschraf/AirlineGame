@@ -2,12 +2,19 @@
 
 
 * {
+    -box-height: 60px;
     -box-width: 100px;
+}
+
+.tool-bar {
+    -fx-pref-height: -box-height;
+    -fx-pref-width: 300px;
+    -fx-background-color: WHITE;
 }
 
 .tool-box {
     -fx-background-color: WHITE;
-    -fx-pref-height: 60px;
+    -fx-pref-height: -box-height;
     -fx-pref-width: -box-width;
     -fx-max-width: -box-width;
     -fx-min-width: -box-width;

@@ -11,10 +11,12 @@ class ToolBarPlaneController {
   @FXML private lateinit var maintenanceView: ImageView
   @FXML private lateinit var maintenanceLabel: Label
 
+  private var alreadyInit = false
 
   @FXML
   fun initialize() {
     println("Controller OK")
+    alreadyInit = true
     planesLabel.text = "0 / 0"
     maintenanceLabel.text = "100 %"
   }

@@ -6,10 +6,10 @@ import com.haouet.airproject.notification.GameWideEvent
 import com.haouet.airproject.notification.INotificationService
 import com.haouet.airproject.util.image
 import com.haouet.airproject.util.loadRegion
-import com.haouet.airproject.view.actionpanel.ActionPanel
+import com.haouet.airproject.view.actionpanel.ActionPanelController
 import com.haouet.airproject.view.dynamicimage.MapCanvas
 import com.haouet.airproject.view.map.MapComponentsHandler
-import com.haouet.airproject.view.toolbar.ToolBarPlanePm
+import com.haouet.airproject.view.toolbar.ToolBarPlaneController
 import javafx.scene.input.KeyCode
 import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.HBox
@@ -21,9 +21,9 @@ class GameView(private val notificationService: INotificationService = getServic
     val view = HBox()
     view.styleClass.add("tool-bar")
 
-    val planeToolBox = ResourceStore.Layout.TOOL_BAR_PLANES.loadRegion(ToolBarPlanePm())
-    val planeToolBox2 = ResourceStore.Layout.TOOL_BAR_PLANES.loadRegion(ToolBarPlanePm())
-    val planeToolBox3 = ResourceStore.Layout.TOOL_BAR_PLANES.loadRegion(ToolBarPlanePm())
+    val planeToolBox = ResourceStore.Layout.TOOL_BAR_PLANES.loadRegion(ToolBarPlaneController())
+    val planeToolBox2 = ResourceStore.Layout.TOOL_BAR_PLANES.loadRegion(ToolBarPlaneController())
+    val planeToolBox3 = ResourceStore.Layout.TOOL_BAR_PLANES.loadRegion(ToolBarPlaneController())
 
     view.children.addAll(planeToolBox, planeToolBox2, planeToolBox3)
 
@@ -47,7 +47,8 @@ class GameView(private val notificationService: INotificationService = getServic
     mainPane.children.add(upper)
 
     // Add ActionPanel
-    ActionPanel().addTo(mainPane)
+    val actionPanelView = ResourceStore.Layout.ACTION_PANEL.loadRegion(ActionPanelController())
+    mainPane.children.add(actionPanelView)
 
     mainPane.setOnKeyPressed {
       if (it.code == KeyCode.ESCAPE) {

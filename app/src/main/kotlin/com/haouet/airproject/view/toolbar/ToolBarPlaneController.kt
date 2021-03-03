@@ -13,7 +13,7 @@ import javafx.scene.control.Tooltip
 import javafx.scene.image.ImageView
 
 
-class ToolBarPlanePm(
+class ToolBarPlaneController(
     private val notificationService: INotificationService = getService()
 ) {
   @FXML private lateinit var mainBox: Node

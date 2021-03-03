@@ -4,7 +4,6 @@ import com.haouet.airproject.binding.getService
 import com.haouet.airproject.common.ResourceStore
 import com.haouet.airproject.notification.GameWideEvent
 import com.haouet.airproject.notification.INotificationService
-import com.haouet.airproject.util.image
 import com.haouet.airproject.util.loadRegion
 import com.haouet.airproject.view.actionpanel.ActionPanelController
 import com.haouet.airproject.view.dynamicimage.MapCanvas
@@ -33,11 +32,9 @@ class GameView(private val notificationService: INotificationService = getServic
   override fun getView(): Pane {
     val mainPane = AnchorPane()
 
-    val image = ResourceStore.Image.EARTH_MAP.getResourceStream().image() ?: throw IllegalStateException("Unable to load map")
 
-    val canvas = MapCanvas(image = image)
+    val canvas = MapCanvas()
     canvas.addViewToPane(mainPane)
-
     MapComponentsHandler(canvas, getService()).loadAll()
 
     // Add upper menu

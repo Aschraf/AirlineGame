@@ -1,16 +1,18 @@
 package com.haouet.airproject.view.dynamicimage
 
+import com.haouet.airproject.common.ResourceStore
+import com.haouet.airproject.util.image
 import javafx.geometry.Dimension2D
 import javafx.geometry.Point2D
 import javafx.scene.Node
-import javafx.scene.image.Image
 import javafx.scene.layout.Pane
 import javafx.scene.shape.Rectangle
 
 
 data class MapComponent<T:Node>(val node: T, val mapX: Int, val mapY: Int)
 
-class MapCanvas(image: Image) : Pane() {
+class MapCanvas : Pane() {
+  private val image = ResourceStore.Image.EARTH_MAP.getResourceStream().image() ?: throw IllegalStateException("Unable to load map")
   private val imageComponent = DynamicImageView(image)
   private val mapComponents = mutableListOf<MapComponent<*>>()
 

@@ -33,7 +33,10 @@ class NotificationService : INotificationService {
   override fun notifyEvent(event: IEvent) {
     logger.debug("Notification $event")
     listeners.forEach { it.handle(event) }
-    typeListeners[event::class]?.forEach { it.handle(event) }
+
+    typeListeners.filterKeys { it.java.isAssignableFrom(event::class.java) }
+        .flatMap { it.value }
+        .forEach { it.handle(event) }
   }
 
 

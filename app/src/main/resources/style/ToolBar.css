@@ -1,0 +1,47 @@
+@import "colors.css";
+
+
+* {
+    -box-height: 60px;
+    -box-width: 100px;
+}
+
+.tool-bar {
+    -fx-pref-height: -box-height;
+    -fx-pref-width: 300px;
+    -fx-background-color: WHITE;
+}
+
+.tool-bar :hover {
+    -fx-background-color: #EEEEEE;
+}
+
+.tool-box {
+    -fx-background-color: WHITE;
+    -fx-pref-height: -box-height;
+    -fx-pref-width: -box-width;
+    -fx-max-width: -box-width;
+    -fx-min-width: -box-width;
+    -fx-padding: 0 5 5 5;
+
+    /* Border */
+    -fx-border-width: 1 1 1 1;
+    -fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-border-insets: 2 2 2 2;
+}
+
+
+.tool-box-main-label {
+    -fx-padding: 2 0 5 0;
+    -fx-font-size: 14px;
+    -fx-font-weight: BOLD;
+    -fx-alignment: CENTER;
+}
+
+.tool-box-info-label {
+    -fx-vgrow-policy: always;
+    -fx-max-width: Infinity;
+    -fx-background-color: -light-disabled;
+    -fx-label-padding: 0 0 0 10px;
+}

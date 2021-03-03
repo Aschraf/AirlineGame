@@ -1,5 +1,6 @@
 @import "colors.css";
 @import "MenuTabPane.css";
+@import "ToolBar.css";
 
 .button-raised {
     -fx-padding: .7em .57em;

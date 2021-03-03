@@ -6,21 +6,22 @@ import com.haouet.airproject.notification.GameWideEvent
 import com.haouet.airproject.notification.INotificationService
 import com.haouet.airproject.util.loadRegion
 import com.haouet.airproject.view.actionpanel.actions.BuyPlaneController
+import com.haouet.airproject.view.events.ToolBoxPressedEvent
 import javafx.animation.TranslateTransition
 import javafx.fxml.FXML
 import javafx.geometry.Pos
 import javafx.scene.control.Tab
 import javafx.scene.control.TabPane
-import javafx.scene.layout.Pane
+import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.Region
 import javafx.scene.layout.StackPane
 import javafx.util.Duration
 
 class ActionPanel(
-    private val parentPane: Pane,
     notificationService: INotificationService = getService(),
 ) {
 
+  private lateinit var parentPane: AnchorPane
   private var isVisible = false
   private val component = loadPanel()
 
@@ -30,8 +31,17 @@ class ActionPanel(
     notificationService.addTypeListener(GameWideEvent.EscapePressed::class) {
       close()
     }
+
+    notificationService.addTypeListener(ToolBoxPressedEvent::class) {
+      println("Listened to event: $it")
+      open()
+    }
   }
 
+
+  fun addTo(parentPane: AnchorPane) {
+    this.parentPane = parentPane
+  }
 
   @FXML
   fun initialize() {
@@ -52,13 +62,16 @@ class ActionPanel(
   }
 
 
-  fun open() {
+  private fun open() {
     if (isVisible) return
 
     val translateTransition = TranslateTransition(Duration(100.0), component)
     translateTransition.fromX = -component.prefWidth
     translateTransition.toX = 0.0
     translateTransition.play()
+
+    AnchorPane.setTopAnchor(component, 200.0)
+    AnchorPane.setLeftAnchor(component, 0.0)
 
     parentPane.children.add(component)
     isVisible = true

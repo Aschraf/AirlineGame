@@ -12,6 +12,10 @@
     -fx-background-color: WHITE;
 }
 
+.tool-bar :hover {
+    -fx-background-color: #EEEEEE;
+}
+
 .tool-box {
     -fx-background-color: WHITE;
     -fx-pref-height: -box-height;

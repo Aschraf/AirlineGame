@@ -61,7 +61,7 @@ class ActionPanel(
     return panel
   }
 
-
+  @Suppress("MagicNumber")
   private fun open() {
     if (isVisible) return
 

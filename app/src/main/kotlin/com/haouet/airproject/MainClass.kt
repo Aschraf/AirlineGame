@@ -19,17 +19,23 @@ class MainClass : Application() {
 
 
     val region = GameView().getView()
+
     //Creating a scene object
-    val scene = Scene(region, 800.0, 400.0)
+    val scene = Scene(region, MIN_WIDTH, MIN_HEIGHT)
     scene.stylesheets.add(ResourceStore.stylesheet)
 
-    stage.minWidth = 800.0
-    stage.minHeight = 400.0
+    stage.minWidth = MIN_WIDTH
+    stage.minHeight = MIN_HEIGHT
 
     //Adding scene to the stage
     stage.scene = scene
-//    stage.isMaximized = true
+    stage.isMaximized = true
     stage.show()
+  }
+
+  companion object {
+    const val MIN_WIDTH = 800.0
+    const val MIN_HEIGHT = 400.0
   }
 }
 

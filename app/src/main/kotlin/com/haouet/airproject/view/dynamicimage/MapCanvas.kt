@@ -28,12 +28,14 @@ class MapCanvas(image: Image) : Pane() {
   }
 
 
-  fun fitToPane(parent: Pane) {
+  fun addViewToPane(parent: Pane) {
     imageComponent.fitTo(parent)
 
     // When resizing the window, we need to update the components
     parent.widthProperty().addListener { _ -> updateComponents() }
     parent.heightProperty().addListener { _ -> updateComponents() }
+
+    parent.children.add(this)
   }
 
 

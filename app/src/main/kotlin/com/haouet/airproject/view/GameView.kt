@@ -33,12 +33,10 @@ class GameView(private val notificationService: INotificationService = getServic
   override fun getView(): Pane {
     val mainPane = AnchorPane()
 
-    val image = ResourceStore.Image.EARTH_MAP.getResourceStream().image()
-        ?: throw IllegalStateException("Unable to load map")
+    val image = ResourceStore.Image.EARTH_MAP.getResourceStream().image() ?: throw IllegalStateException("Unable to load map")
 
     val canvas = MapCanvas(image = image)
-    canvas.fitToPane(mainPane)
-    mainPane.children.add(canvas)
+    canvas.addViewToPane(mainPane)
 
     MapComponentsHandler(canvas, getService()).loadAll()
 

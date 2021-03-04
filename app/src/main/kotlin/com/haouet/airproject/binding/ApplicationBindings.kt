@@ -1,5 +1,6 @@
 package com.haouet.airproject.binding
 
+import com.haouet.airproject.data.PackageLoader
 import com.haouet.airproject.data.store.airport.AirportStore
 import com.haouet.airproject.data.store.airport.IAirportStore
 import com.haouet.airproject.data.store.manufacturer.IManufacturerPlaneStore
@@ -17,7 +18,7 @@ import kotlin.reflect.KClass
 
 object ApplicationBindings {
   lateinit var application: KoinApplication
-  fun createBinding() {
+  fun createBinding(packageLoader: PackageLoader) {
     application = startKoin {
       // declare modules
       modules(
@@ -26,9 +27,9 @@ object ApplicationBindings {
             single<INotificationService> { NotificationService() }
 
             // Stores
-            single<IAirportStore> { AirportStore() }
-            single<IAirplaneStore> { AirplaneStore() }
-            single<IManufacturerStore> { ManufacturerStore() }
+            single<IAirportStore> { AirportStore(packageLoader) }
+            single<IAirplaneStore> { AirplaneStore(packageLoader) }
+            single<IManufacturerStore> { ManufacturerStore(packageLoader) }
             single<IManufacturerPlaneStore> { ManufacturerPlaneStore(get(), get()) }
           }
       )

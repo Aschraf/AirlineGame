@@ -1,19 +1,20 @@
 package com.haouet.airproject.data.store.plane
 
-import com.haouet.airproject.common.ResourceStore
+import com.haouet.airproject.data.PackageLoader
+import com.haouet.airproject.data.PackageResource
 import com.haouet.airproject.data.store.ILocalStore
-import com.haouet.airproject.share.util.FileUtil
+import com.haouet.airproject.share.util.loadCsvFile
 
 
 interface IAirplaneStore : ILocalStore<AirplanePojo>
 
-class AirplaneStore : IAirplaneStore {
-  override val content: List<AirplanePojo> = FileUtil.loadCsvFile(ResourceStore.Map.AIRPLANE.path, 9) {
+class AirplaneStore(packageLoader: PackageLoader) : IAirplaneStore {
+  override val content: List<AirplanePojo> = packageLoader.csvFile(PackageResource.AIRPLANE).loadCsvFile(9) {
     var counter = 0
     AirplanePojo(
         manufacturer = it[counter++],
         modelName = it[counter++],
-        image = it[counter++],
+        image = packageLoader.imageFile(PackageResource.AIRPLANE, it[counter++]),
         price = (it[counter++].toDouble() * 1_000_000).toInt(),
         launchYear = it[counter++].toInt(),
         maxSeat = it[counter++].toInt(),

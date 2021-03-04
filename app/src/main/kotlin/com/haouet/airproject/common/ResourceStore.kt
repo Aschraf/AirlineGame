@@ -20,6 +20,7 @@ object ResourceStore {
     ACTION_PANEL("/layout/ActionPanel.fxml"),
     BUY_PLANE_LAYOUT("/layout/BuyPlaneView.fxml"),
     TOOL_BAR_PLANES("/layout/toolbar/ToolBarPlanes.fxml"),
+    AIRPORT_MINI_PANEL("/layout/AirportMiniPanel.fxml"),
   }
 
   enum class Icon(override val path: String) : ILocalResource {

@@ -1,5 +1,7 @@
 package com.haouet.airproject.notification
 
+import com.haouet.airproject.data.store.airport.AirportPojo
+
 sealed class ToolBoxPressedEvent : IEvent {
   object AirplaneToolBox : ToolBoxPressedEvent()
 }
@@ -11,4 +13,5 @@ sealed class SystemWideEvent : IEvent {
 
 sealed class MapEvent : IEvent {
   object MapLeftClick : MapEvent()
+  data class AirportSelected(val airportPojo: AirportPojo) : MapEvent()
 }

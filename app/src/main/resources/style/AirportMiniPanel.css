@@ -1,0 +1,15 @@
+@import "colors.css";
+
+
+.airport-mini-panel {
+    -fx-background-color: WHITE;
+    /*-fx-pref-height: -box-height;*/
+    /*-fx-pref-width: -box-width;*/
+    /*-fx-padding: 0 5 5 5;*/
+
+    /* Border */
+    -fx-border-width: 1 1 1 1;
+    -fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-border-insets: 2 2 2 2;
+}

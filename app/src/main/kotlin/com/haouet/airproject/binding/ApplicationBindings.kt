@@ -9,15 +9,18 @@ import com.haouet.airproject.notification.INotificationService
 import com.haouet.airproject.notification.NotificationService
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
+import org.koin.core.module.Module
 import org.koin.dsl.module
 import kotlin.reflect.KClass
 
 object ApplicationBindings {
   lateinit var application: KoinApplication
-  fun createBinding(packageLoader: PackageLoader) {
+  fun createBinding(extraModule: Module, packageLoader: PackageLoader) {
     application = startKoin {
       // declare modules
       modules(
+          extraModule,
+
           module {
             // Services
             single<INotificationService> { NotificationService() }
@@ -25,7 +28,10 @@ object ApplicationBindings {
             // Stores
             single<IAirportStore> { AirportStore(packageLoader) }
             single<IAirplaneStore> { AirplaneStore(packageLoader) }
+
+            // Controllers
           }
+
       )
 
     }

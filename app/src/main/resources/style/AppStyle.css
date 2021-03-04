@@ -1,6 +1,7 @@
 @import "colors.css";
 @import "MenuTabPane.css";
 @import "ToolBar.css";
+@import "AirportMiniPanel.css";
 
 .button-raised {
     -fx-padding: .7em .57em;

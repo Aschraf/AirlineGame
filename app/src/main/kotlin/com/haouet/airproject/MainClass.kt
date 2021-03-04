@@ -1,13 +1,23 @@
 package com.haouet.airproject
 
 import com.haouet.airproject.binding.ApplicationBindings
+import com.haouet.airproject.binding.getService
 import com.haouet.airproject.common.ResourceStore
 import com.haouet.airproject.data.PackageLoader
+import com.haouet.airproject.notification.INotificationService
+import com.haouet.airproject.notification.SystemWideEvent
 import com.haouet.airproject.view.GameView
+import com.haouet.airproject.view.ILeftPopViewHandler
+import com.haouet.airproject.view.LeftPopViewHandler
+import com.haouet.airproject.view.actionpanel.ActionPanelActionListener
+import com.haouet.airproject.view.airport.AirportMiniPanelActionListener
 import de.codecentric.centerdevice.javafxsvg.SvgImageLoaderFactory
 import javafx.application.Application
 import javafx.scene.Scene
+import javafx.scene.input.KeyCode
+import javafx.scene.layout.Pane
 import javafx.stage.Stage
+import org.koin.dsl.module
 
 
 class MainClass : Application() {
@@ -15,25 +25,50 @@ class MainClass : Application() {
     stage.title = "Hello World!"
 
     val packageLoader = PackageLoader("data")
-    ApplicationBindings.createBinding(packageLoader)
+
 
     SvgImageLoaderFactory.install()
 
+    val gameView = GameView()
+    val gamePane = gameView.mainPane
 
-    val region = GameView().getView()
+    val viewModule = createViewModule(gamePane)
+    ApplicationBindings.createBinding(viewModule, packageLoader)
+
+    val notificationService: INotificationService = getService()
+
+    gamePane.setOnKeyPressed {
+      if (it.code == KeyCode.ESCAPE) {
+        notificationService.notifyEvent(SystemWideEvent.EscapePressed)
+      }
+    }
 
     //Creating a scene object
-    val scene = Scene(region, MIN_WIDTH, MIN_HEIGHT)
+    val scene = Scene(gamePane, MIN_WIDTH, MIN_HEIGHT)
     scene.stylesheets.add(ResourceStore.stylesheet)
 
     stage.minWidth = MIN_WIDTH
     stage.minHeight = MIN_HEIGHT
+
+    gameView.loadView()
+    startDisplayActionListeners()
 
     //Adding scene to the stage
     stage.scene = scene
     stage.isMaximized = true
     stage.show()
   }
+
+
+  private fun createViewModule(pane: Pane) = module {
+    single<ILeftPopViewHandler> { LeftPopViewHandler(pane, get()) }
+  }
+
+  private fun startDisplayActionListeners() {
+    AirportMiniPanelActionListener.start()
+    ActionPanelActionListener().start()
+  }
+
 
   companion object {
     const val MIN_WIDTH = 800.0

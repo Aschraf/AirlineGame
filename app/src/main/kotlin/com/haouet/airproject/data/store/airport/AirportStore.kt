@@ -9,7 +9,12 @@ import com.haouet.airproject.share.util.loadCsvFile
 interface IAirportStore : ILocalStore<AirportPojo>
 
 class AirportStore(packageLoader: PackageLoader) : IAirportStore {
-  override val content: List<AirportPojo> = packageLoader.csvFile(PackageResource.AIRPORT).loadCsvFile(4) {
-    AirportPojo(it[0], it[1], GcsCoordinates(it[2].toDouble(), it[3].toDouble()))
+  override val content: List<AirportPojo> = packageLoader.csvFile(PackageResource.AIRPORT).loadCsvFile(5) {
+    AirportPojo(
+        it[0].trim(),
+        it[1].trim(),
+        packageLoader.imageFile(PackageResource.AIRPORT, it[2]),
+        GcsCoordinates(it[3].toDouble(), it[4].toDouble())
+    )
   }
 }

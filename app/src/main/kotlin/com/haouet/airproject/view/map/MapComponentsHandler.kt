@@ -46,7 +46,6 @@ class MapComponentsHandler(
     airportStore.content.forEach {
 
       val node = Circle(5.0, Color.BLACK)
-
       node.addTooltip(it)
 
       val (locX, locY) = it.gcs.asPlanar(mapSize.width, mapSize.height)
@@ -56,6 +55,7 @@ class MapComponentsHandler(
       node.setOnPrimaryMouseClicked { e ->
         updateSelection(airportComponent)
         e.consume()
+        notificationService.notifyEvent(MapEvent.AirportSelected(it))
       }
 
 

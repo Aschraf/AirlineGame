@@ -2,14 +2,18 @@ package com.haouet.airproject.data.store.plane
 
 import com.haouet.airproject.data.PackageLoader
 import com.haouet.airproject.data.PackageResource
-import com.haouet.airproject.data.store.ILocalStore
 import com.haouet.airproject.share.util.loadCsvFile
 
 
-interface IAirplaneStore : ILocalStore<AirplanePojo>
+interface IAirplaneStore {
+  val planes: List<AirplanePojo>
+  val manufacturers: List<ManufacturerPojo>
+  val manufacturerToPlane: List<ManufacturerPlanes>
+}
 
 class AirplaneStore(packageLoader: PackageLoader) : IAirplaneStore {
-  override val content: List<AirplanePojo> = packageLoader.csvFile(PackageResource.AIRPLANE).loadCsvFile(9) {
+
+  override val planes: List<AirplanePojo> = packageLoader.csvFile(PackageResource.AIRPLANE).loadCsvFile(9) {
     var counter = 0
     AirplanePojo(
         manufacturer = it[counter++],
@@ -23,4 +27,14 @@ class AirplaneStore(packageLoader: PackageLoader) : IAirplaneStore {
         consumption = it[counter].toFloat(),
     )
   }
+
+  override val manufacturers: List<ManufacturerPojo> = packageLoader.csvFile(PackageResource.MANUFACTURER).loadCsvFile(3) {
+    ManufacturerPojo(it[0], it[1], packageLoader.imageFile(PackageResource.MANUFACTURER, it[2]))
+  }
+
+  override val manufacturerToPlane: List<ManufacturerPlanes> = planes
+      .groupBy { it.manufacturer }
+      .mapKeys { (key, _) -> manufacturers.first { it.id == key } }
+      .map { (manufacturer, planes) -> ManufacturerPlanes(manufacturer, planes) }
 }
+

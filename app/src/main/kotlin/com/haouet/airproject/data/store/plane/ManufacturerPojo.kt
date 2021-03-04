@@ -1,4 +1,4 @@
-package com.haouet.airproject.data.store.manufacturer
+package com.haouet.airproject.data.store.plane
 
 import java.io.File
 import javafx.scene.image.Image

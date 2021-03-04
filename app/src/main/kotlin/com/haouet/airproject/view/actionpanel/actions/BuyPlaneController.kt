@@ -1,9 +1,9 @@
 package com.haouet.airproject.view.actionpanel.actions
 
 import com.haouet.airproject.binding.getService
-import com.haouet.airproject.data.store.manufacturer.IManufacturerPlaneStore
-import com.haouet.airproject.data.store.manufacturer.ManufacturerPlanes
 import com.haouet.airproject.data.store.plane.AirplanePojo
+import com.haouet.airproject.data.store.plane.IAirplaneStore
+import com.haouet.airproject.data.store.plane.ManufacturerPlanes
 import com.haouet.airproject.share.util.NumberFormatter
 import com.haouet.airproject.share.view.IconListCell
 import com.jfoenix.controls.JFXListView
@@ -17,7 +17,7 @@ import javafx.util.Callback
 
 
 class BuyPlaneController(
-    private val manufacturerPlaneStore: IManufacturerPlaneStore = getService(),
+    private val planeStore: IAirplaneStore = getService(),
 ) {
   @FXML
   private lateinit var mainList: JFXListView<ManufacturerPlanes>
@@ -60,7 +60,7 @@ class BuyPlaneController(
   }
 
   private fun fillList() {
-    val content = manufacturerPlaneStore.content
+    val content = planeStore.manufacturerToPlane
 
     planeDetailPane.isVisible = false
 

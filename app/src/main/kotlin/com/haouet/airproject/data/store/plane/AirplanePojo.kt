@@ -1,5 +1,6 @@
 package com.haouet.airproject.data.store.plane
 
+import java.io.File
 import javafx.scene.image.Image
 
 /**
@@ -10,17 +11,17 @@ import javafx.scene.image.Image
  * fuel: https://www.wikiwand.com/en/Fuel_economy_in_aircraft
  */
 data class AirplanePojo(
-  val manufacturer: String,
-  val modelName: String,
-  val image: String,
-  val price: Int,
-  val launchYear: Int,
-  val maxSeat: Int,
-  val speed: Int,
-  val range: Int,
-  val consumption: Float,
+    val manufacturer: String,
+    val modelName: String,
+    val image: File?,
+    val price: Int,
+    val launchYear: Int,
+    val maxSeat: Int,
+    val speed: Int,
+    val range: Int,
+    val consumption: Float,
 ) {
-  fun loadImage(): Image? = javaClass.classLoader.getResourceAsStream("images/plane/$image")?.let { Image(it) }
+  fun loadImage(): Image? = image?.let { Image(it.toURI().toString()) }
 
   val fullName: String = "$manufacturer $modelName"
 }

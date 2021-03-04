@@ -22,12 +22,6 @@ object ResourceStore {
     TOOL_BAR_PLANES("/layout/toolbar/ToolBarPlanes.fxml"),
   }
 
-  enum class Map(override val path: String) : ILocalResource {
-    AIRPORT("/common/airport.csv"),
-    AIRPLANE("/common/planes.csv"),
-    MANUFACTURER("/common/manufacturer.csv"),
-  }
-
   enum class Icon(override val path: String) : ILocalResource {
     PLANE_BLACK("icons/plane.svg"),
     GEAR_BLACK("icons/gear.svg"),

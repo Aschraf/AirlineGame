@@ -1,4 +1,4 @@
-Manufacturer,Model,price,launch,seat,speed,range,consumption
+Manufacturer,Model  ,image      ,price,launch,seat,speed,range,consumption
 Boeing,737-700,737-700.png,89.1,1998,149,833,7408,3.21
 Boeing,737-800,737-800.jpg,106.1,1998,184,833,8148,3.59
 Airbus,A320,a320.jpg,2016,99,150,828,6500,2.79

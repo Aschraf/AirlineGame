@@ -28,23 +28,4 @@ class ActionPanelController(private val close: (Node) -> Unit) {
 
     tabPane.tabs.addAll(buyPlaneTab, dummyTab)
   }
-
-
-  // Small lock to avoid closing twice
-  private var isTransitionOn = false
-
-  fun close() {
-//    if (isTransitionOn || !mainPane.isVisible) return
-//    isTransitionOn = true
-//
-//    val translateTransition = TranslateTransition(Duration(100.0), mainPane)
-//    translateTransition.fromX = 0.0
-//    translateTransition.toX = -mainPane.prefWidth
-//    translateTransition.play()
-//
-//    translateTransition.setOnFinished {
-//      mainPane.isVisible = false
-//      isTransitionOn = false
-//    }
-  }
 }

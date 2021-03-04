@@ -3,7 +3,7 @@ package com.haouet.airproject.data
 import java.io.File
 
 enum class PackageResource(val csvLocation: String, val imagesFolder: String?) {
-  AIRPORT("airport.csv", null),
+  AIRPORT("airport.csv", "airport_img"),
   AIRPLANE("planes.csv", "planes_img"),
   MANUFACTURER("manufacturer.csv", "manufacturer_img"),
 }

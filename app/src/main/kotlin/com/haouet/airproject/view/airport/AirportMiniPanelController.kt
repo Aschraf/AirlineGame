@@ -19,6 +19,7 @@ class AirportMiniPanelController(private val airportPojo: AirportPojo, private v
   fun initialize() {
     airportActivityLabel.text = "100"
     airportNameLabel.text = airportPojo.name
+    airportImageView.image = airportPojo.loadImage()
 
     closeButton.setOnAction { closing(panelBox) }
   }

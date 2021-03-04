@@ -13,3 +13,10 @@
     -fx-border-style: solid;
     -fx-border-insets: 2 2 2 2;
 }
+
+.airport-mini-panel-text {
+    -fx-font-size: 14px;
+    -fx-font-weight: BOLD;
+    -fx-alignment: CENTER;
+    -fx-content-display: CENTER;
+}

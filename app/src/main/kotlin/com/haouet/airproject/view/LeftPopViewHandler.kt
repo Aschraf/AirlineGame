@@ -27,6 +27,7 @@ class LeftPopViewHandler(
     }
   }
 
+  @Suppress("MagicNumber")
   override fun showNode(node: Node) {
     currentNode?.let { removeNode(it) }
 

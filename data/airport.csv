@@ -1,3 +1,3 @@
-IATA,Name,Lat,Long
-CDG,Paris Charles de Gaulle,49.0097,2.548
-JFK ,John F. Kennedy Int    ,40.6413,-73.7781
+IATA,Name                   ,Image    ,Lat    ,Long
+CDG ,Paris Charles de Gaulle,Paris.jpg,49.0097,2.548
+JFK ,John F. Kennedy Int    ,JFK.jpg  ,40.6413,-73.7781

@@ -9,7 +9,8 @@ import com.haouet.airproject.notification.SystemWideEvent
 import com.haouet.airproject.view.GameView
 import com.haouet.airproject.view.ILeftPopViewHandler
 import com.haouet.airproject.view.LeftPopViewHandler
-import com.haouet.airproject.view.airport.AirportMiniPanelDisplayService
+import com.haouet.airproject.view.actionpanel.ActionPanelActionListener
+import com.haouet.airproject.view.airport.AirportMiniPanelActionListener
 import de.codecentric.centerdevice.javafxsvg.SvgImageLoaderFactory
 import javafx.application.Application
 import javafx.scene.Scene
@@ -36,8 +37,6 @@ class MainClass : Application() {
 
     val notificationService: INotificationService = getService()
 
-    AirportMiniPanelDisplayService.start()
-
     gamePane.setOnKeyPressed {
       if (it.code == KeyCode.ESCAPE) {
         notificationService.notifyEvent(SystemWideEvent.EscapePressed)
@@ -52,6 +51,7 @@ class MainClass : Application() {
     stage.minHeight = MIN_HEIGHT
 
     gameView.loadView()
+    startDisplayActionListeners()
 
     //Adding scene to the stage
     stage.scene = scene
@@ -63,6 +63,12 @@ class MainClass : Application() {
   private fun createViewModule(pane: Pane) = module {
     single<ILeftPopViewHandler> { LeftPopViewHandler(pane, get()) }
   }
+
+  private fun startDisplayActionListeners() {
+    AirportMiniPanelActionListener.start()
+    ActionPanelActionListener().start()
+  }
+
 
   companion object {
     const val MIN_WIDTH = 800.0

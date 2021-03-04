@@ -8,7 +8,7 @@ import com.haouet.airproject.util.loadRegion
 import com.haouet.airproject.util.logger
 import com.haouet.airproject.view.ILeftPopViewHandler
 
-object AirportMiniPanelDisplayService {
+object AirportMiniPanelActionListener {
   private val log = logger()
 
   fun start(

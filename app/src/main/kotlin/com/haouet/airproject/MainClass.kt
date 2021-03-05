@@ -65,7 +65,7 @@ class MainClass : Application() {
   }
 
   private fun startDisplayActionListeners() {
-    AirportMiniPanelActionListener.start()
+    AirportMiniPanelActionListener().start()
     ActionPanelActionListener().start()
   }
 

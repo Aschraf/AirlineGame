@@ -14,19 +14,30 @@ import javafx.scene.paint.Color
 import javafx.scene.shape.Circle
 import javafx.util.Duration
 
+
+enum class Selection {
+  SELECT_1,
+  SELECT_2,
+  NOT_SELECTED,
+}
+
 data class AirportWithComponent(
     val airportPojo: AirportPojo,
     val component: MapComponent<Circle>,
 ) {
 
-  var isSelected: Boolean = false
+  var selection: Selection = Selection.NOT_SELECTED
     set(value) {
       field = value
       updateView()
     }
 
   private fun updateView() {
-    component.node.fill = if (isSelected) Color.BLUE else Color.BLACK
+    component.node.fill = when (selection) {
+      Selection.SELECT_1     -> Color.BLUE
+      Selection.SELECT_2     -> Color.GREEN
+      Selection.NOT_SELECTED -> Color.BLACK
+    }
   }
 
 }
@@ -39,6 +50,8 @@ class MapComponentsHandler(
 ) {
 
   private val airportComponents = mutableListOf<AirportWithComponent>()
+  private var primaryAirport: AirportWithComponent? = null
+  private var secondaryAirport: AirportWithComponent? = null
 
   fun loadAll() {
     val mapSize = canvas.imageSize
@@ -53,35 +66,55 @@ class MapComponentsHandler(
       val airportComponent = AirportWithComponent(it, mapComponent)
 
       node.setOnPrimaryMouseClicked { e ->
-        updateSelection(airportComponent)
+        updateSelection(airportComponent, e.isControlDown)
+        notificationService.notifyEvent(MapEvent.AirportSelected(primaryAirport?.airportPojo, secondaryAirport?.airportPojo))
         e.consume()
-        notificationService.notifyEvent(MapEvent.AirportSelected(it))
       }
-
 
       airportComponents.add(airportComponent)
       canvas.addComponent(mapComponent)
     }
 
 
-
-
     canvas.setOnPrimaryMouseClicked {
-      updateSelection(null)
+      if (primaryAirport != null || secondaryAirport != null) {
+        clearSelection()
+        notificationService.notifyEvent(MapEvent.AirportSelected(primaryAirport?.airportPojo, secondaryAirport?.airportPojo))
+      }
+
       notificationService.notifyEvent(MapEvent.MapLeftClick)
     }
   }
 
 
-  private fun updateSelection(component: AirportWithComponent?) {
-    airportComponents.forEach { it.isSelected = false }
-    component?.isSelected = true
+  private fun updateSelection(component: AirportWithComponent, isCtrlDown: Boolean) {
+    if (primaryAirport != null && isCtrlDown) {
+      // Update secondary Airport
+      secondaryAirport?.selection = Selection.NOT_SELECTED
+      component.selection = Selection.SELECT_2
+      secondaryAirport = component
+    } else {
+      // Update primary Airport
+      secondaryAirport?.selection = Selection.NOT_SELECTED
+      secondaryAirport = null
+      primaryAirport?.selection = Selection.NOT_SELECTED
+      component.selection = Selection.SELECT_1
+      primaryAirport = component
+    }
   }
 
-  private fun Node.addTooltip(airportPojo: AirportPojo) {
-    val t = Tooltip(airportPojo.name)
-    t.showDelay = Duration(500.0)
-    Tooltip.install(this, t)
+  private fun clearSelection() {
+    primaryAirport?.selection = Selection.NOT_SELECTED
+    primaryAirport = null
+    secondaryAirport?.selection = Selection.NOT_SELECTED
+    secondaryAirport = null
   }
 
+}
+
+
+private fun Node.addTooltip(airportPojo: AirportPojo) {
+  val t = Tooltip(airportPojo.name)
+  t.showDelay = Duration(500.0)
+  Tooltip.install(this, t)
 }

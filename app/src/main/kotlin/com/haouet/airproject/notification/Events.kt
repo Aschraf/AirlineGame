@@ -13,5 +13,5 @@ sealed class SystemWideEvent : IEvent {
 
 sealed class MapEvent : IEvent {
   object MapLeftClick : MapEvent()
-  data class AirportSelected(val airportPojo: AirportPojo) : MapEvent()
+  data class AirportSelected(val primaryAirport: AirportPojo?, val secondaryAirport: AirportPojo?) : MapEvent()
 }

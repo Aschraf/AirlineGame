@@ -3,7 +3,7 @@ repositories {
 }
 
 plugins {
-  id("org.openjfx.javafxplugin") version "0.0.9"
+  id("org.openjfx.javafxplugin") version "0.0.10"
 }
 
 javafx {
